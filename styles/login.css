@@ -1,0 +1,50 @@
+html {
+    background: url('/styles/img/bg.avif') center/cover no-repeat;
+}
+
+body {
+    font-family: 'LTStreak-Bold';
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+input, button {
+    width: 25vh;
+}
+
+button {
+    margin: 40px;
+}
+
+button {
+    width: 20vh;
+}
+
+#loading {
+    width: 7.5vh;
+}
+
+footer {
+    width: 35vh;
+}
+
+footer h5 {
+    margin: 1vh;
+}
+
+@media (max-width: 900px) {
+    body {
+        flex-direction: column;
+        height: 94vh;
+        overflow: hidden;
+    }
+    footer {
+        width: 100%;
+        border-top-left-radius: 0px !important;
+        border-top-right-radius: 0px !important;
+    }
+}

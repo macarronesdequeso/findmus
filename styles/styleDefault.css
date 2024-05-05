@@ -1,0 +1,39 @@
+@font-face {
+    font-family: LTStreak-Bold;
+    src: url('/styles/localFonts/LTStreak-Bold.ttf') format('truetype');
+}
+
+.mainMenu {
+    justify-content: center;
+    text-align: center;
+    width: 17.5em;
+    height: fit-content;
+    padding: 2.5em;
+    border-radius: 10px;
+}
+
+body {
+    font-family: 'LTStreak-Bold';
+}
+
+h3 {
+    font-size: 1.5em;
+    margin-top: 0.75em;
+    margin-bottom: 0.625em;
+}
+
+input, button {
+    padding: 0.4em;
+    border-radius: 10px;
+    font-size: 1.25em;
+    font-family: 'LTStreak-Bold';
+    border: none;
+}
+
+footer {
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    position: fixed;
+    bottom: 0;
+    text-align: center;
+}

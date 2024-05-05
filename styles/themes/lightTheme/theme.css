@@ -1,0 +1,29 @@
+/* Theme Name: Light Theme */
+
+body {
+    background-color: rgba(230, 245, 255, 0.85);
+    color: #333333;
+}
+
+button {
+    background-color: rgba(173, 216, 230, 0.425);
+    color: #333333;
+}
+
+a, p, h1, h2, h3, h4, h5, h6 {
+    color: #333333;
+}
+
+input {
+    background-color: rgba(173, 216, 230, 0.425);
+    color: #333333;
+}
+
+.mainMenu {
+    background-color: rgba(230, 245, 255, 0.65);
+}
+
+footer {
+    background-color: rgba(230, 245, 255, 0.65);
+    color: #333333;
+}
