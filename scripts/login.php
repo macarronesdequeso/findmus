@@ -26,36 +26,30 @@ $username_db = "root";
 $password_db = "";
 $database = "users";
 
-// Intentar la conexión a la base de datos utilizando MySQLi Object-Oriented
-$conn = mysqli_connect($host, $username_db, $password_db, $database);
+// Intentar la conexión a la base de datos utilizando PDO
+try {
+    $conn = new PDO("mysql:host=$host;dbname=$database", $username_db, $password_db);
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-// Verificar la conexión
-if ($conn->connect_error) {
-    // Si hay un error en la conexión, redirige con un mensaje de error
-    header("Location: ../login.php?error=Error de conexión a la base de datos");
-    exit();
-}
+    // Verifica si se ha enviado el formulario
+    if ($_POST) {
+        $username = $_POST["username"];
+        $password = $_POST["password"];
 
-// Verifica si se ha enviado el formulario
-if ($_POST) {
-    $username = $_POST["username"];
-    $password = $_POST["password"];
+        // Consulta SQL para obtener el usuario con el mismo nombre
+        $sql = "SELECT user, pass FROM users_cred WHERE user = :username";
 
-    // Consulta SQL para obtener el usuario con el mismo nombre
-    $sql = "SELECT user, pass FROM users_cred WHERE user = ?";
+        // Preparar la consulta
+        $stmt = $conn->prepare($sql);
+        $stmt->bindParam(':username', $username);
 
-    // Preparar la consulta
-    $stmt = $conn->prepare($sql);
-    $stmt->bind_param('s', $username);
-
-    // Ejecutar la consulta
-    if ($stmt->execute()) {
-        $result = $stmt->get_result();
+        // Ejecutar la consulta
+        $stmt->execute();
 
         // Comprueba si se encontraron resultados
-        if ($result->num_rows > 0) {
+        if ($stmt->rowCount() > 0) {
             // Obtener la contraseña cifrada de la base de datos
-            $row = $result->fetch_assoc();
+            $row = $stmt->fetch(PDO::FETCH_ASSOC);
             $stored_password = $row['pass'];
 
             // Verificar si la contraseña proporcionada coincide con la contraseña cifrada almacenada
@@ -88,13 +82,13 @@ if ($_POST) {
             exit(); // Detener la ejecución adicional
         }
     } else {
-        // Si hay un error al ejecutar la consulta, redirige con un mensaje de error
-        header("Location: ../login.php?error=Error al intentar iniciar sesión");
+        // Si no se envió el formulario, redirige con un mensaje de error
+        header("Location: ../login.php?error=ERR: Algo salió mal");
         exit(); // Detener la ejecución adicional
     }
-} else {
-    // Si no se envió el formulario, redirige con un mensaje de error
-    header("Location: ../login.php?error=ERR: Something Went Wrong");
-    exit(); // Detener la ejecución adicional
+} catch(PDOException $e) {
+    // Si ocurre un error en la conexión a la base de datos, redirige con un mensaje de error
+    header("Location: ../login.php?error=Error de conexión a la base de datos");
+    exit();
 }
 ?>

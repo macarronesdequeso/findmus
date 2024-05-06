@@ -3,6 +3,10 @@
     src: url('/styles/localFonts/LTStreak-Bold.ttf') format('truetype');
 }
 
+html {
+    height: 100%;
+}
+
 .mainMenu {
     justify-content: center;
     text-align: center;

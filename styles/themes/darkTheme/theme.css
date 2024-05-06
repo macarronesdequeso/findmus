@@ -1,7 +1,10 @@
 /* Theme Name: Dark Theme */
 
 body {
-    background-color: rgba(28, 46, 74, 0.85);
+    background-image: linear-gradient(to bottom, rgba(28, 46, 74, 0.85), rgba(5, 11, 70, 0.85));
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
     color: white;
 }
 
@@ -14,6 +17,14 @@ a, p, h1, h2, h3, h4, h5, h6 {
     color: white;
 }
 
-.mainMenu, footer, .homeContainer, .menuDiv, label {
+.mainMenu, footer, .homeContainer, .menuDiv, label, .songDetails {
     background-color: rgba(12, 12, 12, 0.45);
+}
+
+.resultsTable tr:nth-child(even) {
+    background-color: rgba(35, 57, 93, 0.425)
+}
+
+.resultsTable tr:nth-child(odd), .imageDisplay {
+    background-color: rgb(46 46 46 / 43%);
 }

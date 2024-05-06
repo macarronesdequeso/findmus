@@ -1,0 +1,72 @@
+/*
+Layout Index
+by Carlos Bautisa Martínez
+*/
+/* Fuentes */
+
+@font-face {
+    font-family: LTStreak-Bold;
+    src: url('/resources/fonts/LTStreak-Bold.ttf') format('truetype');
+}
+
+.homeContainer {
+    position: fixed;
+    right: 0;
+    top: 50vh;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 40vh;
+    width: 12vh;
+    overflow-x: hidden;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    z-index: 1;
+}
+
+#topLogo {
+    display: block;
+    margin: auto;
+    padding-top: 10px;
+}
+
+#searchIco, #logoHome {
+    margin-bottom: 4em;
+}
+
+#searchIco, #profileIco {
+    display: grid;
+    width: 4em;
+}
+
+.imageContainer {
+    display: flex;
+    transform: translateY(40%);
+    justify-content: center;
+}
+
+.imageDisplay {
+    width: 25vw;
+    height: 25vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+
+.imageDisplay img {
+    width: 20vw;
+    height: auto;
+    border-radius: 10px;
+}
+
+.songDetails {
+    width: 30%;
+    padding-left: 2.5vh;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+}

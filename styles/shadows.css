@@ -2,6 +2,6 @@
     box-shadow: 0 7.5px 20px rgba(26, 26, 26, 0.35);
 }
 
-.menuDiv {
+.menuDiv, #coverImg {
     box-shadow: 0 0 20px rgba(26, 26, 26, 0.35);
 }
