@@ -40,4 +40,3 @@
   <li>Move the root directory to "/opt/lampp/htdocs"</li>
   <li>In phpMyAdmin, execute / import the SQL files included in the repository</li>
 </ul>
-<h4>Linux</h4>
