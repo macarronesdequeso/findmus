@@ -24,7 +24,7 @@
         <div class="homeBar">
             <img id="logoHome" class="icon" data-icon="logo">
             <img id="searchIco" class="icon" data-icon="search">
-            <input id="searchInput" placeholder="Buscar...">
+            <input id="searchInput" placeholder="Buscar..." value="<?php echo isset($_GET['search']) ? htmlspecialchars($_GET['search']) : ''; ?>">
         </div>
         <div class="subhomeBar">
             
