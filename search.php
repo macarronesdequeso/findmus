@@ -33,51 +33,51 @@
     </div>
     <div class="menuDiv">
     <?php
-    // Check if the search parameter is set in the URL
+    // Verifica si el parámetro de búsqueda está definido en la URL
     if (isset($_GET['search'])) {
-        // Get the search query from the URL and sanitize it
+        // Obtiene la consulta de búsqueda de la URL
         $search_query = htmlspecialchars($_GET['search']);
 
-        // Your database connection code
+        // Tu código de conexión a la base de datos
         $host = "localhost";
         $username = "root";
         $password = "";
         $database = "music";
 
-        // Connect to the database
+        // Conectar a la base de datos
         $conn = new mysqli($host, $username, $password, $database);
 
-        // Check the connection
+        // Verifica la conexión
         if ($conn->connect_error) {
             die("Conexión fallida: " . $conn->connect_error);
         }
 
-        // SQL query to search for songs matching the search query
+        // Consulta SQL para buscar canciones que coincidan con la consulta de búsqueda
         $sql = "SELECT * FROM songs WHERE composer LIKE ? OR name LIKE ?";
         
-        // Prepare the statement
+        // Prepara la declaración
         $stmt = $conn->prepare($sql);
 
-        // Bind parameters
+        // Enlaza los parámetros
         $search_param = "%" . $search_query . "%";
         $stmt->bind_param("ss", $search_param, $search_param);
 
-        // Execute the query
+        // Ejecuta la consulta
         $stmt->execute();
 
-        // Get the result set
+        // Obtiene el conjunto de resultados
         $result = $stmt->get_result();
 
-        // Check if there are any results
+        // Verifica si hay resultados
         if ($result->num_rows > 0) {
-            // Output table header
+            // Muestra el encabezado de la tabla
             echo "<div class='resultsTable'><table>";
             echo "<tr><th></th><th>Nombre</th><th>Fecha creación</th><th>Compositor</th><th>Vistas</th></tr>";
 
-            // Output data of each row
+            // Muestra los datos de cada fila
             while ($row = $result->fetch_assoc()) {
                 echo "<tr>";
-                echo "<td><img id='coverImg' src='/songs/" . htmlspecialchars($row["id"]) . "/cover.jpg' alt='Song Image'></td>";
+                echo "<td><img id='coverImg' src='/songs/" . htmlspecialchars($row["id"]) . "/cover.jpg' alt='Imagen de la canción'></td>";
                 echo "<td><a href='/song.php?id=" . htmlspecialchars($row["id"]) . "'>" . htmlspecialchars($row["name"]) . "</a></td>";
                 echo "<td>" . htmlspecialchars($row["dateCreation"]) . "</td>";
                 echo "<td>" . htmlspecialchars($row["composer"]) . "</td>";
@@ -85,21 +85,21 @@
                 echo "</tr>";
             }
 
-            // Close the table
+            // Cierra la tabla
             echo "</table></div>";
         } else {
-            // No results found
+            // No se encontraron resultados
             echo "<h1>No se encontraron resultados<h1>";
         }
 
-        // Close the statement
+        // Cierra la declaración
         $stmt->close();
 
-        // Close the database connection
+        // Cierra la conexión a la base de datos
         $conn->close();
     } else {
-        // If the search parameter is not set, display a message or handle it as needed
-        echo "<h1>No se encontro el parametro de busqueda<h1>";
+        // Si el parámetro de búsqueda no está definido, muestra un mensaje o manéjalo según sea necesario
+        echo "<h1>No se encontró el parámetro de búsqueda<h1>";
     }
     ?>
     </div>    

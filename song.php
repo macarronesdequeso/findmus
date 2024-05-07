@@ -19,7 +19,6 @@
     <script src="scripts/themeManager.js"></script>
     <img id="topLogo" class="icon" data-icon="logoText">
 
-    <!-- Home container with icons -->
     <div class="homeContainer">
         <div class="homeBar">
             <img id="logoHome" class="icon" data-icon="logo">
@@ -29,7 +28,7 @@
     </div>
     
     <div class="imageContainer">
-        <!-- Image display area -->
+        <!-- Contenedor de imagen -->
         <div class="imageDisplay">
             <?php
             // Incluir el script songManager.php para obtener los detalles de la canción y los archivos asociados
@@ -45,7 +44,7 @@
             ?>
         </div>
         
-        <!-- Song details -->
+        <!-- Contenedor de detalles de canción -->
         <div class="songDetails">
             <?php
             // Verificar si se encontró la canción

@@ -22,7 +22,7 @@
             <img class="icon" data-icon="logoText">
             <form action="scripts/register.php" method="post">
                 <?php 
-                // Check if an error message is passed in the URL parameters
+                // Verifica si se pasa un mensaje de error en los parámetros de la URL
                 if (isset($_GET["error"])) { 
                     echo $error_message = $_GET["error"];
                     ?>
