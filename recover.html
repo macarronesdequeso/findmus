@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="/styles/shadows.css">
     <!-- Animations CSS -->
     <link rel="stylesheet" href="/styles/animationsLogin.css">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
 </head>
 <body>
     <script src="scripts/themeManager.js"></script>

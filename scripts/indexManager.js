@@ -14,12 +14,12 @@ document.addEventListener("DOMContentLoaded", function() {
     // Agregar un evento de escucha para el clic en el logo
     logoHome.addEventListener("click", function() {
         // Redirigir al index
-        window.location.href = "index.html";
+        window.location.href = "/";
     });
 
     // Agregar un evento de escucha para el clic en la imagen de perfil
     profileIcon.addEventListener("click", function() {
-        window.location.href = "login.php";
+        window.location.href = "login";
     });
 
     // Agregar un evento de escucha para el clic en la imagen de búsqueda
@@ -28,7 +28,7 @@ document.addEventListener("DOMContentLoaded", function() {
         const searchQuery = searchInput.value;
 
         // Redirigir a la página de búsqueda con el término de búsqueda como parámetro de consulta en la URL
-        window.location.href = "search.php?search=" + encodeURIComponent(searchQuery);
+        window.location.href = "search?search=" + encodeURIComponent(searchQuery);
     });
 
     // Agregar un evento de escucha para el evento "keypress" en el campo de entrada de búsqueda
@@ -39,7 +39,7 @@ document.addEventListener("DOMContentLoaded", function() {
             const searchQuery = searchInput.value;
 
             // Redirigir a la página de búsqueda con el término de búsqueda como parámetro de consulta en la URL
-            window.location.href = "search.php?search=" + encodeURIComponent(searchQuery);
+            window.location.href = "search?search=" + encodeURIComponent(searchQuery);
         }
     });
 });

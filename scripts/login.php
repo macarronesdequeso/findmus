@@ -16,7 +16,7 @@ if (!isset($_SESSION['login_attempts'])) {
 // Verifica si se ha excedido el cooldown
 if (isset($_SESSION['cooldown_timestamp']) && time() - $_SESSION['cooldown_timestamp'] < $cooldown_duration) {
     // Si aún está en el cooldown, redirige con un mensaje de error
-    header("Location: ../login.php?error=Por favor, espera unos minutos antes de intentar de nuevo");
+    header("Location: ../login?error=Por favor, espera unos minutos antes de intentar de nuevo");
     exit(); // Detener la ejecución adicional
 }
 
@@ -68,27 +68,27 @@ try {
                     // Establece la marca de tiempo para el cooldown
                     $_SESSION['cooldown_timestamp'] = time();
                     // Redirige con un mensaje de error
-                    header("Location: ../login.php?error=Has excedido el número máximo de intentos. Por favor, espera unos minutos antes de intentar de nuevo");
+                    header("Location: ../login?error=Has excedido el número máximo de intentos. Por favor, espera unos minutos antes de intentar de nuevo");
                     exit(); // Detener la ejecución adicional
                 } else {
                     // Redirige con un mensaje de error de usuario o contraseña incorrectos
-                    header("Location: ../login.php?error=Usuario o contraseña incorrectos");
+                    header("Location: ../login?error=Usuario o contraseña incorrectos");
                     exit(); // Detener la ejecución adicional
                 }
             }
         } else {
             // Si no se encontró el nombre de usuario en la base de datos, redirige con un mensaje de error
-            header("Location: ../login.php?error=Usuario o contraseña incorrectos");
+            header("Location: ../login?error=Usuario o contraseña incorrectos");
             exit(); // Detener la ejecución adicional
         }
     } else {
         // Si no se envió el formulario, redirige con un mensaje de error
-        header("Location: ../login.php?error=ERR: Algo salió mal");
+        header("Location: ../login?error=ERR: Algo salió mal");
         exit(); // Detener la ejecución adicional
     }
 } catch(PDOException $e) {
     // Si ocurre un error en la conexión a la base de datos, redirige con un mensaje de error
-    header("Location: ../login.php?error=Error de conexión a la base de datos");
+    header("Location: ../login?error=Error de conexión a la base de datos");
     exit();
 }
 ?>

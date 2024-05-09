@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="/styles/shadows.css">
     <!-- Animations CSS -->
     <link rel="stylesheet" href="/styles/animationsLogin.css">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
 </head>
 <body>
     <script src="scripts/themeManager.js"></script>
@@ -35,12 +36,10 @@
                 <input type="password" name="password" id="password" placeholder="Contraseña" required>
                 <button type="submit">Registrarse</button>
             </form>
-            <br>
-            <a href="recover.html">Se me ha olvidado la contraseña</a>
         </div>
     </div>
     <footer>
-        <h4>¿Ya tienes cuenta? <a href="login.php">Inicia sesión</a></h4>
+        <h4>¿Ya tienes cuenta? <a href="login">Inicia sesión</a></h4>
         <h5>Findmus © 2024</h5>
     </footer>
 </body>

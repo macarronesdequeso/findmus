@@ -78,7 +78,7 @@
             while ($row = $result->fetch_assoc()) {
                 echo "<tr>";
                 echo "<td><img id='coverImg' src='/songs/" . htmlspecialchars($row["id"]) . "/cover.jpg' alt='Imagen de la canción'></td>";
-                echo "<td><a href='/song.php?id=" . htmlspecialchars($row["id"]) . "'>" . htmlspecialchars($row["name"]) . "</a></td>";
+                echo "<td><a href='/song?id=" . htmlspecialchars($row["id"]) . "'>" . htmlspecialchars($row["name"]) . "</a></td>";
                 echo "<td>" . htmlspecialchars($row["dateCreation"]) . "</td>";
                 echo "<td>" . htmlspecialchars($row["composer"]) . "</td>";
                 echo "<td>" . htmlspecialchars($row["views"]) . "</td>";

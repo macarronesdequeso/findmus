@@ -34,10 +34,10 @@ try {
 
         // Si el nombre de usuario o el correo electrónico ya existen, redirige con un mensaje de error
         if (count($result_username) > 0) {
-            header("Location: ../register.php?error=El nombre de usuario ya está en uso");
+            header("Location: ../register?error=El nombre de usuario ya está en uso");
             exit();
         } elseif (count($result_email) > 0) {
-            header("Location: ../register.php?error=El correo electrónico ya está en uso");
+            header("Location: ../register?error=El correo electrónico ya está en uso");
             exit();
         }
 
@@ -52,21 +52,21 @@ try {
 
         if ($stmt->execute()) {
             // Redirige al usuario a la página de inicio de sesión después del registro exitoso
-            header("Location: ../login.php?success=Registro exitoso. Por favor, inicia sesión");
+            header("Location: ../login?success=Registro exitoso. Por favor, inicia sesión");
             exit();
         } else {
             // Si hay un error al ejecutar la consulta, redirige con un mensaje de error
-            header("Location: ../register.php?error=Error al intentar registrar el usuario");
+            header("Location: ../register?error=Error al intentar registrar el usuario");
             exit();
         }
     } else {
         // Si no se envió el formulario, redirige con un mensaje de error
-        header("Location: ../register.php?error=ERR: Algo salió mal");
+        header("Location: ../register?error=ERR: Algo salió mal");
         exit();
     }
 } catch(PDOException $e) {
     // Si ocurre un error en la conexión a la base de datos, redirige con un mensaje de error
-    header("Location: ../register.php?error=Error de conexión a la base de datos");
+    header("Location: ../register?error=Error de conexión a la base de datos");
     exit();
 }
 ?>
