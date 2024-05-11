@@ -62,9 +62,9 @@ try {
             } else {
                 // Incrementa el contador de intentos
                 $_SESSION['login_attempts']++;
-                
+
                 // Verifica si se han excedido los intentos permitidos
-                if ($_SESSION['login_attempts'] > $max_attempts) {
+                if ($_SESSION['login_attempts'] >= $max_attempts) { // Cambio >= para incluir el límite
                     // Establece la marca de tiempo para el cooldown
                     $_SESSION['cooldown_timestamp'] = time();
                     // Redirige con un mensaje de error
@@ -77,10 +77,22 @@ try {
                 }
             }
         } else {
-            // Si no se encontró el nombre de usuario en la base de datos, redirige con un mensaje de error
-            header("Location: ../login?error=Usuario o contraseña incorrectos");
-            exit(); // Detener la ejecución adicional
+            // Incrementa el contador de intentos
+            $_SESSION['login_attempts']++;
+            // Verifica si se han excedido los intentos permitidos
+            if ($_SESSION['login_attempts'] >= $max_attempts) { // Cambio >= para incluir el límite
+                // Establece la marca de tiempo para el cooldown
+                $_SESSION['cooldown_timestamp'] = time();
+                // Redirige con un mensaje de error
+                header("Location: ../login?error=Has excedido el número máximo de intentos. Por favor, espera unos minutos antes de intentar de nuevo");
+                exit(); // Detener la ejecución adicional
+            } else {
+                // Si no se encontró el nombre de usuario en la base de datos, redirige con un mensaje de error
+                header("Location: ../login?error=Usuario o contraseña incorrectos");
+                exit(); // Detener la ejecución adicional
+            }
         }
+        
     } else {
         // Si no se envió el formulario, redirige con un mensaje de error
         header("Location: ../login?error=ERR: Algo salió mal");
