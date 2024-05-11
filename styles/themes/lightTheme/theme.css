@@ -2,9 +2,6 @@
 
 body {
     background-image: linear-gradient(to bottom, rgba(139, 199, 255, 0.85), rgba(14, 138, 255, 0.85)) !important;
-    background-repeat: no-repeat;
-    background-size: 250% 250%;
-    background-position: center;
     color: #000;
 }
 

@@ -1,12 +1,14 @@
-/*
-Layout Index
-by Carlos Bautisa Martínez
-*/
-/* Fuentes */
-
 @font-face {
     font-family: LTStreak-Bold;
-    src: url('/styles/localFonts/LTStreak-Bold.ttf') format('truetype');
+    src: url('/resources/fonts/LTStreak-Bold.ttf') format('truetype');
+}
+
+html {
+    background: url('/styles/img/bg_index.jpg') center/cover no-repeat;
+}
+
+body {
+    margin: 0;
 }
 
 .homeContainer {
