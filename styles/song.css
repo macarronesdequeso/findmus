@@ -6,7 +6,7 @@ by Carlos Bautisa Martínez
 
 @font-face {
     font-family: LTStreak-Bold;
-    src: url('/resources/fonts/LTStreak-Bold.ttf') format('truetype');
+    src: url('/styles/localFonts/LTStreak-Bold.ttf') format('truetype');
 }
 
 .homeContainer {

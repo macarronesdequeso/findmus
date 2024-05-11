@@ -1,6 +1,6 @@
 @font-face {
     font-family: LTStreak-Bold;
-    src: url('/resources/fonts/LTStreak-Bold.ttf') format('truetype');
+    src: url('/styles/localFonts/LTStreak-Bold.ttf') format('truetype');
 }
 
 .homeContainer {
@@ -39,6 +39,10 @@
 
 #searchIco {
     margin-left: 10%;
+}
+
+.resultsTable {
+    overflow: auto;
 }
 
 input, button {

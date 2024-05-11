@@ -1,29 +1,30 @@
 /* Theme Name: Light Theme */
 
 body {
-    background-color: rgba(230, 245, 255, 0.85);
-    color: #333333;
+    background-image: linear-gradient(to bottom, rgba(139, 199, 255, 0.85), rgba(14, 138, 255, 0.85)) !important;
+    background-repeat: no-repeat;
+    background-size: 250% 250%;
+    background-position: center;
+    color: #000;
 }
 
-button {
-    background-color: rgba(173, 216, 230, 0.425);
-    color: #333333;
+button, input {
+    background-color: rgba(220, 220, 220, 0.425);
+    color: #000;
 }
 
 a, p, h1, h2, h3, h4, h5, h6 {
-    color: #333333;
+    color: #000;
 }
 
-input {
-    background-color: rgba(173, 216, 230, 0.425);
-    color: #333333;
+.mainMenu, footer, .homeContainer, .menuDiv, label, .songDetails {
+    background-color: rgba(245, 245, 245, 0.45);
 }
 
-.mainMenu {
-    background-color: rgba(230, 245, 255, 0.65);
+.resultsTable tr:nth-child(even) {
+    background-color: rgba(200, 200, 200, 0.425)
 }
 
-footer {
-    background-color: rgba(230, 245, 255, 0.65);
-    color: #333333;
+.resultsTable tr:nth-child(odd), .imageDisplay {
+    background-color: rgb(230, 230, 230, 0.43);
 }
