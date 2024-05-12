@@ -15,13 +15,13 @@ a, p, h1, h2, h3, h4, h5, h6 {
 }
 
 .mainMenu, footer, .homeContainer, .menuDiv, label, .songDetails {
-    background-color: rgba(245, 245, 245, 0.45);
+    background-color: rgba(210, 210, 210, 0.45);
 }
 
 .resultsTable tr:nth-child(even) {
-    background-color: rgba(200, 200, 200, 0.425)
+    background-color: rgba(85, 85, 85, 0.425)
 }
 
 .resultsTable tr:nth-child(odd), .imageDisplay {
-    background-color: rgb(230, 230, 230, 0.43);
+    background-color: rgba(100, 100, 100, 0.43);
 }

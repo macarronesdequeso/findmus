@@ -24,7 +24,7 @@
         <div class="homeBar">
             <img id="logoHome" class="icon" data-icon="logo">
             <img id="searchIco" class="icon" data-icon="search">
-            <input id="searchInput" placeholder="Buscar..." value="<?php echo isset($_GET['search']) ? htmlspecialchars($_GET['search']) : ''; ?>">
+            <input id="searchInput" placeholder="Buscar..." value="<?php echo isset($_GET['q']) ? htmlspecialchars($_GET['q']) : ''; ?>">
         </div>
         <div class="subhomeBar">
             
@@ -34,9 +34,9 @@
     <div class="menuDiv">
     <?php
     // Verifica si el parámetro de búsqueda está definido en la URL
-    if (isset($_GET['search'])) {
+    if (isset($_GET['q'])) {
         // Obtiene la consulta de búsqueda de la URL
-        $search_query = htmlspecialchars($_GET['search']);
+        $search_query = htmlspecialchars($_GET['q']);
 
         // Tu código de conexión a la base de datos
         $host = "localhost";

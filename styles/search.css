@@ -3,10 +3,15 @@
     src: url('/styles/localFonts/LTStreak-Bold.ttf') format('truetype');
 }
 
+body {
+    overflow: hidden;
+}
+
 .homeContainer {
     display: flex;
     border-radius: 10px;
-    margin: 1.5%;
+    margin-inline: 1.5%;
+    margin-bottom: 2%;
     padding: 1%;
 }
 
@@ -75,4 +80,20 @@ table td {
 #coverImg {
     width: 6em;
     border-radius: 5px;
+}
+
+@media (max-width: 600px) {
+    .homeContainer {
+        margin-bottom: 10%;
+    }
+
+    .homeBar img, .subhomeBar img {
+        scale: 0.7;
+    }
+    .homeBar input {
+        width: 70%;
+    }
+    .menuDiv button, .menuDiv input {
+        scale: 0.9;
+    }
 }

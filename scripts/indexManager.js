@@ -28,7 +28,7 @@ document.addEventListener("DOMContentLoaded", function() {
         const searchQuery = searchInput.value;
 
         // Redirigir a la página de búsqueda con el término de búsqueda como parámetro de consulta en la URL
-        window.location.href = "search?search=" + encodeURIComponent(searchQuery);
+        window.location.href = "search?q=" + encodeURIComponent(searchQuery);
     });
 
     // Agregar un evento de escucha para el evento "keypress" en el campo de entrada de búsqueda
@@ -39,7 +39,7 @@ document.addEventListener("DOMContentLoaded", function() {
             const searchQuery = searchInput.value;
 
             // Redirigir a la página de búsqueda con el término de búsqueda como parámetro de consulta en la URL
-            window.location.href = "search?search=" + encodeURIComponent(searchQuery);
+            window.location.href = "search?q=" + encodeURIComponent(searchQuery);
         }
     });
 });
