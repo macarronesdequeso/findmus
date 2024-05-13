@@ -9,9 +9,9 @@ $database = "music";
 if(isset($_GET['id']) && is_numeric($_GET['id'])) {
     $id = intval($_GET['id']);
 
-    // Si el ID es menor que 0, establecerlo como 0
-    if ($id < 0) {
-        $id = 0;
+    // Si el ID es menor que -1, establecerlo como -1
+    if ($id < -1) {
+        $id = -1;
     }
 
     // Intentar la conexión a la base de datos utilizando PDO

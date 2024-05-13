@@ -1,9 +1,3 @@
-/*
-Layout Index
-by Carlos Bautisa Martínez
-*/
-/* Fuentes */
-
 @font-face {
     font-family: LTStreak-Bold;
     src: url('/resources/fonts/LTStreak-Bold.ttf') format('truetype');
@@ -54,8 +48,12 @@ label {
     border-top-right-radius: 10px;
 }
 
-input, button {
+input, button, form {
     margin: 0.2em;
+}
+
+form {
+    display: flex;
 }
 
 .menuDiv {
@@ -67,4 +65,26 @@ input, button {
     border-bottom-right-radius: 10px;
     border-top-right-radius: 10px;
     margin-bottom: 20px;
+}
+
+@media (max-width: 600px) {
+    .homeContainer {
+        margin-bottom: 10%;
+    }
+
+    .homeBar img, .subhomeBar img {
+        scale: 0.7;
+    }
+    #searchInput {
+        width: 70%;
+        font-size: large;
+    }
+
+    .menuDiv input {
+        scale: 0.9;
+    }
+
+    form {
+        display: block;
+    }
 }

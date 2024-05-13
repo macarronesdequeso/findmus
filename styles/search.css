@@ -90,8 +90,9 @@ table td {
     .homeBar img, .subhomeBar img {
         scale: 0.7;
     }
-    .homeBar input {
+    #searchInput {
         width: 70%;
+        font-size: large;
     }
     .menuDiv button, .menuDiv input {
         scale: 0.9;

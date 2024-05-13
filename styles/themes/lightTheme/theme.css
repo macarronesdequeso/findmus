@@ -18,10 +18,10 @@ a, p, h1, h2, h3, h4, h5, h6 {
     background-color: rgba(210, 210, 210, 0.45);
 }
 
-.resultsTable tr:nth-child(even) {
-    background-color: rgba(85, 85, 85, 0.425)
+tr:nth-child(even) {
+    background-color: rgba(165, 165, 165, 0.425)
 }
 
-.resultsTable tr:nth-child(odd), .imageDisplay {
-    background-color: rgba(100, 100, 100, 0.43);
+tr:nth-child(odd), .imageDisplay {
+    background-color: rgba(190, 190, 190, 0.43);
 }

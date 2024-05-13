@@ -22,7 +22,6 @@ body {
     justify-content: center;
     height: 40vh;
     width: 12vh;
-    overflow-x: hidden;
     border-top-left-radius: 10px;
     border-bottom-left-radius: 10px;
     z-index: 1;
@@ -67,8 +66,61 @@ body {
 }
 
 .songDetails {
-    width: 30%;
-    padding-left: 2.5vh;
+    width: 40%;
+    height: 25vw;
+    padding-inline: 2.5vh;
     border-top-right-radius: 10px;
     border-bottom-right-radius: 10px;
+    overflow-y: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    border-radius: 10px;
+}
+
+table th, table td {
+    padding: 1em;
+}
+
+table td {
+    font-size: x-large;
+}
+
+@media screen and (max-width: 1300px) {
+    .imageContainer {
+        flex-direction: column;
+        align-items: center;
+        transform: translateY(5%);
+    }
+
+    .imageDisplay {
+        width: 40vh;
+        height: 40vh;
+        border-bottom-left-radius: 0;
+        border-top-right-radius: 10px;
+    }
+
+    .imageDisplay img {
+        width: 30vh;
+        height: 30vh;
+        border-radius: 10px;
+    }
+
+    .songDetails {
+        width: 35vh;
+        height: 45vh;
+        border-top-right-radius: 0;
+        border-bottom-left-radius: 10px;
+        overflow-y: scroll;
+    }
+
+    .songDetails table {
+        width: fit-content;
+    }
+
+    table td {
+        font-size: medium;
+    }
 }

@@ -72,15 +72,16 @@
         if ($result->num_rows > 0) {
             // Muestra el encabezado de la tabla
             echo "<div class='resultsTable'><table>";
-            echo "<tr><th></th><th>Nombre</th><th>Fecha creación</th><th>Compositor</th><th>Vistas</th></tr>";
+            echo "<tr><th></th><th>Nombre</th><th>Compositor</th><th>Album</th><th>Fecha creación</th><th>Vistas</th></tr>";
 
             // Muestra los datos de cada fila
             while ($row = $result->fetch_assoc()) {
                 echo "<tr>";
                 echo "<td><img id='coverImg' src='/songs/" . htmlspecialchars($row["id"]) . "/cover.jpg' alt='Imagen de la canción'></td>";
                 echo "<td><a href='/song?id=" . htmlspecialchars($row["id"]) . "'>" . htmlspecialchars($row["name"]) . "</a></td>";
-                echo "<td>" . htmlspecialchars($row["dateCreation"]) . "</td>";
                 echo "<td>" . htmlspecialchars($row["composer"]) . "</td>";
+                echo "<td>" . htmlspecialchars($row["album"]) . "</td>";
+                echo "<td>" . htmlspecialchars($row["dateCreation"]) . "</td>";
                 echo "<td>" . htmlspecialchars($row["views"]) . "</td>";
                 echo "</tr>";
             }

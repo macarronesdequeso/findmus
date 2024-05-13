@@ -18,16 +18,6 @@
 </head>
 <body>
     <script src="scripts/themeManager.js"></script>
-    <img id="topLogo" class="icon" data-icon="logoText">
-
-    <div class="homeContainer">
-        <div class="homeBar">
-            <img id="logoHome" class="icon" data-icon="logo">
-            <img id="searchIco" class="icon" data-icon="search">
-            <img id="profileIco" id="pro" class="icon" data-icon="profile">
-        </div>
-    </div>
-    
     <div class="imageContainer">
         <!-- Contenedor de imagen -->
         <div class="imageDisplay">

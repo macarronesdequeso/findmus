@@ -9,7 +9,6 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
 }
 
 input, button {
@@ -29,7 +28,7 @@ button {
 }
 
 footer {
-    width: 35vh;
+    width: 105vh;
 }
 
 footer h5 {
@@ -38,10 +37,9 @@ footer h5 {
 
 @media (max-width: 900px) {
     body {
-        flex-direction: column;
-        height: 94vh;
-        overflow: hidden;
+        height: 94vh !important;
     }
+
     footer {
         width: 100%;
         border-top-left-radius: 0px !important;
