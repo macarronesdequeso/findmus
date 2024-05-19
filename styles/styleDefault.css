@@ -1,13 +1,16 @@
 @font-face {
     font-family: LTStreak-Bold;
     src: url('/styles/localFonts/LTStreak-Bold.ttf') format('truetype');
+    background-size: cover !important;
+}
+
+html, body {
+    background-size: cover;
 }
 
 body {
-    height: 100vh;
-    background-repeat: no-repeat;
-    background-size: 300% 300%;
-    background-position: center;
+    background-size: 100vh 100vh;
+    font-family: 'LTStreak-Bold';
 }
 
 .mainMenu {
@@ -17,10 +20,6 @@ body {
     height: fit-content;
     padding: 2.5em;
     border-radius: 10px;
-}
-
-body {
-    font-family: 'LTStreak-Bold';
 }
 
 h3 {

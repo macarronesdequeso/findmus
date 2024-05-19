@@ -34,7 +34,7 @@
                 <input type="email" name="email" id="email" placeholder="Correo" required>
                 <h3>Ingresa una contraseña</h3>
                 <input type="password" name="password" id="password" placeholder="Contraseña" required>
-                <button type="submit">Registrarse</button>
+                <button id="register" type="submit">Registrarse</button>
             </form>
         </div>
     </div>

@@ -1,3 +1,7 @@
+html, body {
+    height: 100vh;
+}
+
 html {
     background: url('/styles/img/bg.avif') center/cover no-repeat;
 }
@@ -12,15 +16,11 @@ body {
 }
 
 input, button {
-    width: 25vh;
+    width: 200px;
 }
 
 button {
     margin: 40px;
-}
-
-button {
-    width: 20vh;
 }
 
 #loading {
@@ -35,9 +35,18 @@ footer h5 {
     margin: 1vh;
 }
 
+#register {
+    margin-bottom: 0.5vh !important;
+}
+
 @media (max-width: 900px) {
-    body {
-        height: 94vh !important;
+
+    html, body {
+        height: 94vh;
+    }
+
+    .mainMenu {
+        margin-bottom: 10vh;
     }
 
     footer {

@@ -1,6 +1,5 @@
-@font-face {
-    font-family: LTStreak-Bold;
-    src: url('/resources/fonts/LTStreak-Bold.ttf') format('truetype');
+html, body {
+    height: 100vh;
 }
 
 html {
