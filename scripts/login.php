@@ -56,15 +56,29 @@ try {
             if (password_verify($password, $stored_password)) {
                 // Si el inicio de sesión es exitoso, restablece el contador de intentos
                 $_SESSION['login_attempts'] = 0;
-                // Redirige al usuario a la página principal
-                header("Location: ../index.html");
+                // Guarda el nombre de usuario en la sesión
+                $_SESSION['username'] = $username;
+
+                // Consulta para obtener la foto de perfil
+                $sql_pfp = "SELECT pfp FROM users_pref WHERE id = (SELECT id FROM users_cred WHERE user = :username)";
+                $stmt_pfp = $conn->prepare($sql_pfp);
+                $stmt_pfp->bindParam(':username', $username);
+                $stmt_pfp->execute();
+
+                if ($stmt_pfp->rowCount() > 0) {
+                    $row_pfp = $stmt_pfp->fetch(PDO::FETCH_ASSOC);
+                    $_SESSION['profile_picture'] = $row_pfp['pfp'];
+                }
+
+                // Redirige al usuario a la página de preferencias
+                header("Location: /");
                 exit(); // Detener la ejecución adicional
             } else {
                 // Incrementa el contador de intentos
                 $_SESSION['login_attempts']++;
 
                 // Verifica si se han excedido los intentos permitidos
-                if ($_SESSION['login_attempts'] >= $max_attempts) { // Cambio >= para incluir el límite
+                if ($_SESSION['login_attempts'] >= $max_attempts) {
                     // Establece la marca de tiempo para el cooldown
                     $_SESSION['cooldown_timestamp'] = time();
                     // Redirige con un mensaje de error
@@ -80,7 +94,7 @@ try {
             // Incrementa el contador de intentos
             $_SESSION['login_attempts']++;
             // Verifica si se han excedido los intentos permitidos
-            if ($_SESSION['login_attempts'] >= $max_attempts) { // Cambio >= para incluir el límite
+            if ($_SESSION['login_attempts'] >= $max_attempts) {
                 // Establece la marca de tiempo para el cooldown
                 $_SESSION['cooldown_timestamp'] = time();
                 // Redirige con un mensaje de error

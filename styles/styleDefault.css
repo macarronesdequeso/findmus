@@ -1,11 +1,10 @@
 @font-face {
     font-family: LTStreak-Bold;
     src: url('/styles/localFonts/LTStreak-Bold.ttf') format('truetype');
-    background-size: cover !important;
 }
 
 html, body {
-    background-size: cover;
+    background-attachment: fixed;
 }
 
 body {

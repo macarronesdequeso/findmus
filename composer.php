@@ -66,7 +66,7 @@
                 $songs = $songs_stmt->fetchAll(PDO::FETCH_ASSOC);
 
                 // Mostrar las canciones en una tabla
-                echo "<h2>Canciones Compuestas por " . $composer['name'] . "</h2>";
+                echo "<h2>Canciones compuestas por " . $composer['name'] . "</h2>";
                 echo "<table>";
                 foreach ($songs as $song) {
                     echo "<tr>";
