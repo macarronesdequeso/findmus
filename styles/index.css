@@ -71,6 +71,27 @@ form {
     box-sizing: border-box;
 }
 
+.song-link {
+    display: inline-flex;
+    position: relative;
+}
+
+.song-image {
+    margin: 0.5%;
+    border-radius: 15px;
+    width: 20vh;
+}
+
+.song-title {
+    padding: 8px;
+    border-radius: 15px;
+    font-size: 22px;
+    position: absolute;
+    bottom: 0;
+    margin: auto;
+    opacity: 0;
+}
+
 @media (max-width: 600px) {
     .homeContainer {
         margin-bottom: 10%;

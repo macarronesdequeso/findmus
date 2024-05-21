@@ -13,13 +13,16 @@
     <!-- Shadows CSS -->
     <link rel="stylesheet" href="/styles/shadows.css">
     <!-- Animations CSS -->
-    <link rel="stylesheet" href="/styles/animationsLogin.css">
+    <link rel="stylesheet" href="/styles/animations.css">
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
 </head>
-<body>
+<body data-user-id="<?php echo isset($user_id) ? $user_id : '-1'; ?>">
     <!-- Scripts -->
     <script src="/scripts/themeManager.js"></script>
     <script src="/scripts/indexManager.js"></script>
+    <!-- Logo Home lleva al Index -->
+    <script src="scripts/logoHome.js"></script>
+
     <div class="homeContainer">
         <div class="homeBar">
             <img id="logoHome" class="icon" data-icon="logo">
@@ -31,6 +34,7 @@
             <img id="profileIco" id="pro" class="icon" data-icon="profile">
         </div>
     </div>
+
     <div class="menuDiv">
     <?php
     // Verifica si el parámetro de búsqueda está definido en la URL

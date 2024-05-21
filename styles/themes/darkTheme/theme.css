@@ -10,6 +10,11 @@ button, input {
     color: #fff;
 }
 
+.song-title {
+    background-color: rgba(30, 30, 30, 0.9);
+    color: #fff;
+}
+
 a, p, h1, h2, h3, h4, h5, h6 {
     color: #fff;
 }

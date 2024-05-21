@@ -13,11 +13,14 @@
     <!-- Shadows CSS -->
     <link rel="stylesheet" href="/styles/shadows.css">
     <!-- Animations CSS -->
-    <link rel="stylesheet" href="/styles/animationsLogin.css">
+    <link rel="stylesheet" href="/styles/animations.css">
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
 </head>
 <body>
     <script src="scripts/themeManager.js"></script>
+    <!-- Logo Home lleva al Index -->
+    <script src="scripts/logoHome.js"></script>
+
     <div class="mainPage">
         <div class="mainMenu">
             <img class="icon" data-icon="logoText">
@@ -38,6 +41,7 @@
             </form>
         </div>
     </div>
+    
     <footer>
         <h4>¿Ya tienes cuenta? <a href="login">Inicia sesión</a></h4>
         <h5>Findmus © 2024</h5>

@@ -1,5 +1,8 @@
 <?php
-session_start();
+// Verificar si la sesión no está iniciada y, si no, iniciarla
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
 
 // Conexión a la base de datos
 $host = "localhost";

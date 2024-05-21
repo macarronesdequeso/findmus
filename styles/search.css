@@ -87,4 +87,7 @@ table td {
     .menuDiv button, .menuDiv input {
         scale: 0.9;
     }
+    table td {
+        font-size: medium;
+    }
 }

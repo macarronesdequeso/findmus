@@ -14,17 +14,18 @@
     <!-- Shadows CSS -->
     <link rel="stylesheet" href="/styles/shadows.css">
     <!-- Animations CSS -->
-    <link rel="stylesheet" href="/styles/animationsLogin.css">
+    <link rel="stylesheet" href="/styles/animations.css">
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
 </head>
 <body data-user-id="<?php echo isset($user_id) ? $user_id : '-1'; ?>">
     <!-- Scripts -->
     <script src="/scripts/themeManager.js"></script>
-    <script src="/scripts/themeChanger.js"></script>
     <script src="/scripts/indexManager.js"></script>
+    <script src="/scripts/userInfoManager.js"></script>
     <div class="fullScreen">
 
     </div>
+    
     <div class="homeContainer">
         <div class="homeBar">
             <img id="logoHome" class="icon" data-icon="logo">
@@ -35,6 +36,7 @@
             <img id="profileIco" id="pro" class="icon" data-icon="profile">
         </div>
     </div>
+
     <label>Bienvenido</label>
     <div class="menuDiv">
         <a href="songTest.html"><button>Song Page Test</button></a>
@@ -49,11 +51,14 @@
             <input type="text" name="id" placeholder="Composer ID">
         </form>
         <a href="phpHealth"><button>PHP Health Check</button></a>
-        <button class="theme-toggle" data="dark">Change Theme (Dark)</button>
-        <button class="theme-toggle" data="light">Change Theme (Light)</button>
     </div>
-    <label>Selecciona una canción</label>
+
+    <label>Musica</label> 
     <div class="menuDiv">
+        <a href="song.php?id=0" class="song-link">
+            <img class="song-image" src="/songs/0/cover.jpg" alt="Nombre Cancion">
+            <p class="song-title">Nombre Cancion</p>
+        </a>          
     </div>
 </body>
 </html>

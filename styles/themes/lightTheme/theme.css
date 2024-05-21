@@ -5,8 +5,13 @@ body {
     color: #000;
 }
 
-button, input {
+button, input, input#file-upload-button {
     background-color: rgba(220, 220, 220, 0.425);
+    color: #000;
+}
+
+.song-title {
+    background-color: rgba(220, 220, 220, 0.9);
     color: #000;
 }
 
