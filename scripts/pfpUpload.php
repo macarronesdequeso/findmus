@@ -11,7 +11,7 @@ if (!isset($_SESSION['username'])) {
 $user_id = isset($_POST['user_id']) ? $_POST['user_id'] : '-1';
 
 // Directorio donde se guardarán las imágenes de perfil
-$targetDir = "/users/";
+$targetDir = "../users/";
 
 // Verificar si se envió un archivo
 if (isset($_FILES["profilePicture"])) {
@@ -28,11 +28,14 @@ if (isset($_FILES["profilePicture"])) {
 
     // Intentar mover el archivo al directorio de destino
     if (move_uploaded_file($file["tmp_name"], $targetFilePath)) {
-        echo "La imagen de perfil se ha guardado correctamente.";
+        header("Location: /");
+        exit();
     } else {
-        echo "Error al guardar la imagen de perfil.";
+        header("Location: preferences?error=Error al guardar la imagen de perfil.");
+        exit();
     }
 } else {
-    echo "No se ha seleccionado ninguna imagen.";
+    header("Location: preferences?error=No se ha seleccionado ninguna imagen.");
+    exit();
 }
 ?>
