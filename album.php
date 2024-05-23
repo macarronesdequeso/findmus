@@ -23,13 +23,13 @@
         <!-- Contenedor de imagen -->
         <div class="imageDisplay">
             <?php
-            // Incluir el script composerManager.php para obtener los detalles del compositor y los archivos asociados
-            require_once "scripts/composerManager.php";
+            // Incluir el script albumManager.php para obtener los detalles del compositor y los archivos asociados
+            require_once "scripts/albumManager.php";
 
             // Verificar si se encontró el compositor
-            if($composer) {
+            if($albums) {
                 // Mostrar la imagen del compositor
-                echo "<img src='/composers/" . $composer['id'] . ".jpg' alt='Imagen del Compositor'>";
+                echo "<img src='/albums/" . $albums['id'] . ".jpg' alt='Imagen del Compositor'>";
             } else {
                 echo "<p>No se encontró ningún compositor con ese ID.</p>";
             }
@@ -40,25 +40,19 @@
         <div class="songDetails">
             <?php
             // Verificar si se encontró el compositor
-            if($composer) {
+            if($albums) {
                 // Mostrar los detalles del compositor
-                echo "<h1>" . $composer['name'] . "</h1>";
-                if ($composer['dateBirth'] != null) {
-                    echo "<p>Fecha de Nacimiento: " . $composer['dateBirth'] . "</p>";
-                }
-                if ($composer['dateDeath'] != null) {
-                    echo "<p>Fecha de Fallecimiento: " . $composer['dateDeath'] . "</p>";
-                }
-                if ($composer['bio'] != null) {
-                    echo "<p>Biografía: " . $composer['bio'] . "</p>";
+                echo "<h1>" . $albums['name'] . "</h1>";
+                if ($albums['composer'] != null) {
+                    echo "<p>Compositor: " . $albums['composer'] . "</p>";
                 }
 
                 // Consulta SQL para obtener las canciones compuestas por el artista
-                $songs_sql = "SELECT * FROM songs WHERE composer = :composer ORDER BY dateCreation ASC";
+                $songs_sql = "SELECT * FROM songs WHERE album = :albums ORDER BY dateCreation ASC";
 
                 // Preparar la consulta
                 $songs_stmt = $conn->prepare($songs_sql);
-                $songs_stmt->bindParam(':composer', $composer['name']);
+                $songs_stmt->bindParam(':albums', $albums['name']);
                 // Ejecutar la consulta
                 $songs_stmt->execute();
 
@@ -66,7 +60,7 @@
                 $songs = $songs_stmt->fetchAll(PDO::FETCH_ASSOC);
 
                 // Mostrar las canciones en una tabla
-                echo "<h2>Canciones compuestas por " . $composer['name'] . "</h2>";
+                echo "<h2>Canciones en " . $albums['name'] . "</h2>";
                 echo "<table>";
                 foreach ($songs as $song) {
                     echo "<tr>";

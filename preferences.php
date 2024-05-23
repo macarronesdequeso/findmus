@@ -74,9 +74,29 @@ require_once 'scripts/userManager.php';
 
     <label>Cuenta</label>
     <div class="menuDiv">
+
         <form method="post" style="display: inline;">
             <button type="submit" name="logout" class="logout">Cerrar sesión</button>
         </form>
+
+    </div>
+
+    <label>Debug</label>
+    <div class="menuDiv">
+
+        <a href="songTest.html"><button>Song Page Test</button></a>
+        <form action="/song" method="get">
+            <button type="submit">Go to Song...</button>
+            <br>
+            <input type="text" name="id" placeholder="Song ID">
+        </form>
+        <form action="/composer.php" method="get">
+            <button type="submit">Go to Composer...</button>
+            <br>
+            <input type="text" name="id" placeholder="Composer ID">
+        </form>
+        <a href="phpHealth"><button>PHP Health Check</button></a>
+
     </div>
 </body>
 </html>

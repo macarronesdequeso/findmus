@@ -11,33 +11,35 @@
     justify-content: flex-start;
     margin-right: auto;
     padding: 0.5%;
-    box-sizing: border-box;
 }
 
 .subhomeBar {
     display: inline-flex;
     justify-content: end;
     padding: 0.5%;
-    box-sizing: border-box;
-}
-
-.profile {
-    border-radius: 10px;
-    width: 90px !important;
-    height: 90px;
 }
 
 #searchInput {
     font-size: xx-large;
     border-radius: 10px;
     padding-left: 20px;
-    border: none;
-    width: 50%;
+    border: 0px;
+    width: 75%;
 }
 
 #searchIco, #profileIco {
     width: 3em;
     margin-inline: 1.5%;
+}
+
+#searchIco {
+    margin-left: 10%;
+}
+
+.profile {
+    border-radius: 10px;
+    width: 90px !important;
+    height: 90px;
 }
 
 label {
@@ -57,6 +59,12 @@ input, button, form {
 form {
     display: flex;
     flex-wrap: wrap;
+}
+
+.songList {
+    display: grid !important;
+    grid-template-columns: repeat(4, 1fr) !important;
+    gap: 1em;
 }
 
 .menuDiv {
@@ -85,7 +93,8 @@ form {
 .song-title {
     padding: 8px;
     border-radius: 15px;
-    font-size: 22px;
+    font-size: large;
+    width: 18vh;
     position: absolute;
     bottom: 0;
     margin: auto;
@@ -93,6 +102,10 @@ form {
 }
 
 @media (max-width: 600px) {
+    .menuDiv {
+        overflow: scroll;
+    }
+
     .homeContainer {
         margin-bottom: 10%;
     }
@@ -100,9 +113,20 @@ form {
     .homeBar img, .subhomeBar img {
         scale: 0.7;
     }
+
+    #searchIco, #profileIco {
+        margin-inline: 0.5%;
+    }
+
     #searchInput {
+        margin-left: 5%;
         width: 70%;
         font-size: large;
+    }
+
+    .profile {
+        width: 70px !important;
+        height: 70px;
     }
 
     .menuDiv input {
@@ -112,4 +136,5 @@ form {
     form {
         display: block;
     }
+
 }

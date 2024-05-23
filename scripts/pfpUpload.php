@@ -31,11 +31,11 @@ if (isset($_FILES["profilePicture"])) {
         header("Location: /");
         exit();
     } else {
-        header("Location: preferences?error=Error al guardar la imagen de perfil.");
+        header("Location: /preferences?error=Error al guardar la imagen de perfil.");
         exit();
     }
 } else {
-    header("Location: preferences?error=No se ha seleccionado ninguna imagen.");
+    header("Location: /preferences?error=No se ha seleccionado ninguna imagen.");
     exit();
 }
 ?>

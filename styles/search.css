@@ -36,6 +36,12 @@
     margin-left: 10%;
 }
 
+.profile {
+    border-radius: 10px;
+    width: 90px !important;
+    height: 90px;
+}
+
 .resultsTable {
     overflow: auto;
 }
@@ -80,13 +86,26 @@ table td {
     .homeBar img, .subhomeBar img {
         scale: 0.7;
     }
+
+    #searchIco, #profileIco {
+        margin-inline: 0.5%;
+    }
+
     #searchInput {
+        margin-left: 5%;
         width: 70%;
         font-size: large;
     }
+
+    .profile {
+        width: 70px !important;
+        height: 70px;
+    }
+
     .menuDiv button, .menuDiv input {
         scale: 0.9;
     }
+
     table td {
         font-size: medium;
     }

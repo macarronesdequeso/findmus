@@ -15,7 +15,7 @@ button, input {
     color: #fff;
 }
 
-a, p, h1, h2, h3, h4, h5, h6 {
+a, p, h1, h2, h3, h4, h5, h6, input::file-selector-button {
     color: #fff;
 }
 
@@ -23,7 +23,7 @@ a, p, h1, h2, h3, h4, h5, h6 {
     background-color: rgba(40, 40, 40, 0.45);
 }
 
-tr:nth-child(even) {
+tr:nth-child(even), input::file-selector-button {
     background-color: rgba(60, 60, 60, 0.425)
 }
 

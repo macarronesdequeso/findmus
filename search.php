@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+    <?php require_once 'scripts/userManager.php'; ?>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Findmus</title>
@@ -20,6 +21,7 @@
     <!-- Scripts -->
     <script src="/scripts/themeManager.js"></script>
     <script src="/scripts/indexManager.js"></script>
+    <script src="/scripts/userInfoManager.js"></script>
     <!-- Logo Home lleva al Index -->
     <script src="scripts/logoHome.js"></script>
 
@@ -30,7 +32,6 @@
             <input id="searchInput" placeholder="Buscar..." value="<?php echo isset($_GET['q']) ? htmlspecialchars($_GET['q']) : ''; ?>">
         </div>
         <div class="subhomeBar">
-            
             <img id="profileIco" id="pro" class="icon" data-icon="profile">
         </div>
     </div>

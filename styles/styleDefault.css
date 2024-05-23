@@ -27,7 +27,7 @@ h3 {
     margin-bottom: 0.625em;
 }
 
-input, button, input#file-upload-button {
+input, button, input::file-selector-button {
     padding: 0.4em;
     border-radius: 10px;
     font-size: 1.25em;

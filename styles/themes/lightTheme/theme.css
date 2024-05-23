@@ -15,7 +15,7 @@ button, input, input#file-upload-button {
     color: #000;
 }
 
-a, p, h1, h2, h3, h4, h5, h6 {
+a, p, h1, h2, h3, h4, h5, h6, input::file-selector-button {
     color: #000;
 }
 
@@ -23,7 +23,7 @@ a, p, h1, h2, h3, h4, h5, h6 {
     background-color: rgba(210, 210, 210, 0.45);
 }
 
-tr:nth-child(even) {
+tr:nth-child(even), input::file-selector-button {
     background-color: rgba(165, 165, 165, 0.425)
 }
 

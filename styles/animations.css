@@ -56,11 +56,11 @@
     transition: opacity 0.3s ease-in-out;
 }
 
-.song-link:hover .song-image {
+.song-link:hover .song-image, #coverImg:hover {
     animation: animLogo 0.5s forwards;
 }
 
-.song-link:not(:hover) .song-image {
+.song-link:not(:hover) .song-image, #coverImg {
     animation: animReverseLogo 0.5s forwards;
 }
 
