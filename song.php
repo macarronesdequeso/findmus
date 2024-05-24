@@ -44,6 +44,7 @@
                 echo "<h1>" . $song['name'] . "</h1>";
                 echo "<p>Fecha de Creación: " . $song['dateCreation'] . "</p>";
                 echo "<p>Compositor: " . $song['composer'] . "</p>";
+                echo "<p>Género: " . $song['genre'] . "</p>";
                 echo "<p>Vistas: " . $song['views'] . "</p>";
 
                 // Reproducir el audio de la canción

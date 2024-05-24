@@ -53,7 +53,23 @@ require_once 'scripts/userManager.php';
         </div>
     </div>
 
-    <label>Información de usuario</label>
+    <?php 
+    if (isset($_GET["error"]) || isset($_GET["success"])) { 
+        echo '<div class="mensaje">';
+        // Verifica si se pasa un mensaje de error en los parámetros de la URL
+        if (isset($_GET["error"])) { 
+            echo $error_message = $_GET["error"];
+        }
+        // Verifica si se pasa un mensaje de éxito en los parámetros de la URL
+        if (isset($_GET["success"])) { 
+            echo $info_message = $_GET["success"];
+        }
+        echo '</div>';
+    }
+    ?>
+
+
+    <label>Foto de perfil</label>
     <div class="menuDiv">
 
         <form action="scripts/pfpUpload.php" method="post" enctype="multipart/form-data">
@@ -63,6 +79,34 @@ require_once 'scripts/userManager.php';
         </form>
 
     </div>
+
+    <label>Información del usuario</label>
+        <div class="menuDiv">
+            <form action="scripts/updateUser.php" method="post">
+                <input type="hidden" name="id" value="<?php echo $user_id; ?>">
+                <div class="grid-container">
+                <div class="grid-item">
+                    <h3>Nombre de usuario:</h3>
+                    <input type="text" id="firstName" placeholder="Nombre" name="firstName" value="<?php echo $user_data['firstName']; ?>">
+                </div>
+                <div class="grid-item">
+                    <h3>Apellido:</h3>
+                    <input type="text" id="lastName" placeholder="Apellido" name="lastName" value="<?php echo $user_data['lastName']; ?>">
+                </div>
+                <div class="grid-item">
+                    <h3>Fecha de Nacimiento:</h3>
+                    <input type="date" id="dateBirth" name="dateBirth" value="<?php echo $user_data['dateBirth']; ?>">
+                </div>
+                <div class="grid-item">
+                    <h3>País:</h3>
+                    <input type="text" id="country" placeholder="País" name="country" value="<?php echo $user_data['country']; ?>">
+                    <button type="submit">Actualizar Información</button>
+                </div>
+                <div class="grid-item">
+                </div>
+            </div>
+            </form>
+        </div>
 
     <label>Tema</label>
     <div class="menuDiv">
@@ -81,22 +125,23 @@ require_once 'scripts/userManager.php';
 
     </div>
 
-    <label>Debug</label>
-    <div class="menuDiv">
+    <?php if ($isAdmin == 1): ?>
+        <label>Debug</label>
+        <div class="menuDiv">
+            <a href="songTest.html"><button>Song Page Test</button></a>
+            <form action="/song" method="get">
+                <button type="submit">Go to Song...</button>
+                <br>
+                <input type="text" name="id" placeholder="Song ID">
+            </form>
+            <form action="/composer.php" method="get">
+                <button type="submit">Go to Composer...</button>
+                <br>
+                <input type="text" name="id" placeholder="Composer ID">
+            </form>
+            <a href="phpHealth"><button>PHP Health Check</button></a>
+        </div>
+    <?php endif; ?>
 
-        <a href="songTest.html"><button>Song Page Test</button></a>
-        <form action="/song" method="get">
-            <button type="submit">Go to Song...</button>
-            <br>
-            <input type="text" name="id" placeholder="Song ID">
-        </form>
-        <form action="/composer.php" method="get">
-            <button type="submit">Go to Composer...</button>
-            <br>
-            <input type="text" name="id" placeholder="Composer ID">
-        </form>
-        <a href="phpHealth"><button>PHP Health Check</button></a>
-
-    </div>
 </body>
 </html>

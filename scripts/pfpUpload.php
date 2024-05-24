@@ -28,7 +28,7 @@ if (isset($_FILES["profilePicture"])) {
 
     // Intentar mover el archivo al directorio de destino
     if (move_uploaded_file($file["tmp_name"], $targetFilePath)) {
-        header("Location: /");
+        header("Location: /preferences?success=Imagen de perfil guardada correctamente.");
         exit();
     } else {
         header("Location: /preferences?error=Error al guardar la imagen de perfil.");

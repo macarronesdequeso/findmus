@@ -19,7 +19,7 @@ a, p, h1, h2, h3, h4, h5, h6, input::file-selector-button {
     color: #000;
 }
 
-.mainMenu, footer, .homeContainer, .menuDiv, label, .songDetails {
+.mainMenu, footer, .homeContainer, .menuDiv, label, .songDetails, .mensaje {
     background-color: rgba(210, 210, 210, 0.45);
 }
 

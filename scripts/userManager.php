@@ -17,8 +17,8 @@ try {
     if (isset($_SESSION['username'])) {
         $username = $_SESSION['username'];
 
-        // Buscar la ruta de la imagen de perfil
-        $sql = "SELECT id FROM users_cred WHERE user = :username";
+        // Buscar el id y isAdmin del usuario actual
+        $sql = "SELECT id, isAdmin FROM users_cred WHERE user = :username";
         $stmt = $conn->prepare($sql);
         $stmt->bindParam(':username', $username);
         $stmt->execute();
@@ -26,26 +26,29 @@ try {
         if ($stmt->rowCount() > 0) {
             $row = $stmt->fetch(PDO::FETCH_ASSOC);
             $user_id = $row['id'];
+            $isAdmin = $row['isAdmin']; // Guardar el estado de isAdmin en una variable
 
-            // Construir la ruta de la imagen de perfil
-            $profile_picture_path = "users/" . $user_id . ".png";
+            // Buscar los datos del usuario en users_data
+            $sql = "SELECT firstName, lastName, dateBirth, country FROM users_data WHERE id = :id";
+            $stmt = $conn->prepare($sql);
+            $stmt->bindParam(':id', $user_id);
+            $stmt->execute();
 
-            echo "Usuario: " . $username . "<br>";
-
-            // Verificar si el archivo de imagen existe en la ruta proporcionada
-            if (file_exists($profile_picture_path)) {
-                // Imprimir la etiqueta <img> con la ruta de la imagen de perfil
-                echo "Foto encontrada";
+            if ($stmt->rowCount() > 0) {
+                $user_data = $stmt->fetch(PDO::FETCH_ASSOC);
             } else {
-                echo "No se encontró la imagen de perfil.";
+                $user_data = null; // No hay datos para este usuario
             }
         } else {
-            echo "Usuario no encontrado.";
+            // Si el usuario no se encuentra, establecer isAdmin en 0
+            $isAdmin = 0;
+            $user_data = null;
         }
     } else {
-        echo "Sesión no iniciada.";
+        // Si la sesión no está iniciada, establecer isAdmin en 0
+        $isAdmin = 0;
+        $user_data = null;
     }
-
 } catch (PDOException $e) {
     echo "Error: " . $e->getMessage();
 }

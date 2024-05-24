@@ -54,7 +54,7 @@
                 }
 
                 // Consulta SQL para obtener las canciones compuestas por el artista
-                $songs_sql = "SELECT * FROM songs WHERE composer = :composer ORDER BY dateCreation ASC";
+                $songs_sql = "SELECT * FROM songs WHERE composer = :composer AND id != -1 ORDER BY dateCreation ASC";
 
                 // Preparar la consulta
                 $songs_stmt = $conn->prepare($songs_sql);

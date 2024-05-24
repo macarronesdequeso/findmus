@@ -58,19 +58,7 @@ try {
                 $_SESSION['login_attempts'] = 0;
                 // Guarda el nombre de usuario en la sesión
                 $_SESSION['username'] = $username;
-
-                // Consulta para obtener la foto de perfil
-                $sql_pfp = "SELECT pfp FROM users_pref WHERE id = (SELECT id FROM users_cred WHERE user = :username)";
-                $stmt_pfp = $conn->prepare($sql_pfp);
-                $stmt_pfp->bindParam(':username', $username);
-                $stmt_pfp->execute();
-
-                if ($stmt_pfp->rowCount() > 0) {
-                    $row_pfp = $stmt_pfp->fetch(PDO::FETCH_ASSOC);
-                    $_SESSION['profile_picture'] = $row_pfp['pfp'];
-                }
-
-                // Redirige al usuario a la página de preferencias
+                // Redirige al usuario a la página de inicio
                 header("Location: /");
                 exit(); // Detener la ejecución adicional
             } else {

@@ -7,7 +7,6 @@ html {
 }
 
 body {
-    font-family: 'LTStreak-Bold';
     margin: 0;
     padding: 0;
     display: flex;
@@ -28,7 +27,7 @@ button {
 }
 
 footer {
-    width: 105vh;
+    width: 305px;
 }
 
 footer h5 {

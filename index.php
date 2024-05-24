@@ -69,5 +69,9 @@
         <?php endif; ?>
     </div>
 
+    <label>Explora</label>
+    <div class="menuDiv">
+    </div>
+
 </body>
 </html>

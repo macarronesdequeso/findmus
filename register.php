@@ -23,7 +23,7 @@
 
     <div class="mainPage">
         <div class="mainMenu">
-            <img class="icon" data-icon="logoText">
+            <img id="logoHome" class="icon" data-icon="logoText">
             <form action="scripts/register.php" method="post">
                 <?php 
                 // Verifica si se pasa un mensaje de error en los parámetros de la URL
@@ -32,17 +32,17 @@
                     ?>
                 <?php } ?>
                 <h3>Ingresa un nombre de usuario</h3>
-                <input type="text" name="username" id="username" placeholder="Nombre de usuario" required>
-                <h3>Ingresa un correo valido</h3>
+                <input type="text" name="username" id="username" placeholder="Nombre de usuario" required minlength="3">
+                <h3>Ingresa un correo válido</h3>
                 <input type="email" name="email" id="email" placeholder="Correo" required>
                 <h3>Ingresa una contraseña</h3>
-                <input type="password" name="password" id="password" placeholder="Contraseña" required>
+                <input type="password" name="password" id="password" placeholder="Contraseña" required minlength="8">
                 <button id="register" type="submit">Registrarse</button>
             </form>
         </div>
     </div>
     
-    <footer>
+    <footer id="loginScreen">
         <h4>¿Ya tienes cuenta? <a href="login">Inicia sesión</a></h4>
         <h5>Findmus © 2024</h5>
     </footer>

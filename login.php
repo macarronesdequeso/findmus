@@ -41,11 +41,11 @@
                 <button type="submit">Iniciar sesión</button>
             </form>
             <br>
-            <a href="recover.html">Se me ha olvidado la contraseña</a>
+            <a href="recover">Se me ha olvidado la contraseña</a>
         </div>
     </div>
     
-    <footer>
+    <footer id="loginScreen">
         <h4>¿No tienes cuenta? <a href="register">Regístrate</a></h4>
         <h5>Findmus © 2024</h5>
     </footer>

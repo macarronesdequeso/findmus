@@ -52,6 +52,10 @@
     animation: fadeIn 1s;
 }
 
+footer {
+    animation: fadeInFooter 1s;
+}
+
 .song-title {
     transition: opacity 0.3s ease-in-out;
 }
