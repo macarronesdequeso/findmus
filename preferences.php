@@ -11,7 +11,7 @@ if (!isset($_SESSION['username'])) {
 if (isset($_POST['logout'])) {
     session_unset();
     session_destroy();
-    header("Location: index");
+    header("Location: /");
     exit();
 }
 
@@ -126,7 +126,7 @@ require_once 'scripts/userManager.php';
     </div>
 
     <?php if ($isAdmin == 1): ?>
-        <label>Debug</label>
+        <label>Debug (solo administrador)</label>
         <div class="menuDiv">
             <a href="songTest.html"><button>Song Page Test</button></a>
             <form action="/song" method="get">

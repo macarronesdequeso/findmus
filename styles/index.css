@@ -68,6 +68,7 @@ form {
 }
 
 .menuDiv {
+    overflow: auto;
     margin-left: 1.5%;
     margin-right: 1.5%;
     height: auto;
@@ -117,6 +118,7 @@ form {
     position: absolute;
     bottom: 0;
     margin: auto;
+    overflow: auto;
     opacity: 0;
 }
 
@@ -131,10 +133,6 @@ form {
 }
 
 @media (max-width: 600px) {
-    .menuDiv {
-        overflow: scroll;
-    }
-
     .homeContainer {
         margin-bottom: 10%;
     }
