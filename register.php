@@ -32,11 +32,11 @@
                     ?>
                 <?php } ?>
                 <h3>Ingresa un nombre de usuario</h3>
-                <input type="text" name="username" id="username" placeholder="Nombre de usuario" required minlength="3">
+                <input type="text" name="username" id="username" placeholder="Nombre de usuario" required minlength="3" maxlength="20">
                 <h3>Ingresa un correo válido</h3>
                 <input type="email" name="email" id="email" placeholder="Correo" required>
                 <h3>Ingresa una contraseña</h3>
-                <input type="password" name="password" id="password" placeholder="Contraseña" required minlength="8">
+                <input type="password" name="password" id="password" placeholder="Contraseña" required minlength="8" maxlength="25">
                 <button id="register" type="submit">Registrarse</button>
             </form>
         </div>

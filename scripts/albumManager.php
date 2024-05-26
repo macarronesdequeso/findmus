@@ -10,7 +10,7 @@ if(isset($_GET['id']) && is_numeric($_GET['id'])) {
     $id = intval($_GET['id']);
 
     // Si el ID es menor que -1, establecerlo como 
-    if ($id < -1) {
+    if ($id < -2) {
         $id = -1;
     }
 

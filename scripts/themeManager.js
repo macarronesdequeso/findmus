@@ -15,6 +15,12 @@ function applyTheme(theme) {
     themeStyleLink.href = `/styles/themes/${themePath}/theme.css`;
 }
 
+// Funcion: Spinner de carga
+function showSpinner() {
+    const spinner = document.getElementById('loading');
+    loading.setAttribute('src', `${path}/loading.gif`);
+}
+
 // Aplicar iconos
 function applyIconsPath(path) {
     const icons = document.querySelectorAll('.icon');

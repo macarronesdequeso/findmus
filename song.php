@@ -1,9 +1,14 @@
+<?php
+    // Incluir el script songManager.php para obtener los detalles de la canción y los archivos asociados
+    require_once "scripts/songManager.php";
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Findmus</title>
+    <title><?php echo "Findmus - " . $song['name']; ?></title>
     <!-- Theme CSS -->
     <link rel="stylesheet" id="theme-style">
     <!-- Specific CSS -->
@@ -22,9 +27,6 @@
         <!-- Contenedor de imagen -->
         <div class="imageDisplay">
             <?php
-            // Incluir el script songManager.php para obtener los detalles de la canción y los archivos asociados
-            require_once "scripts/songManager.php";
-
             // Verificar si se encontró la canción
             if($song) {
                 // Mostrar la imagen de la portada del álbum

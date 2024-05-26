@@ -1,3 +1,10 @@
+<?php
+
+// Incluir el script albumManager.php para obtener los detalles del compositor y los archivos asociados
+require_once "scripts/albumManager.php";
+
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -23,13 +30,11 @@
         <!-- Contenedor de imagen -->
         <div class="imageDisplay">
             <?php
-            // Incluir el script albumManager.php para obtener los detalles del compositor y los archivos asociados
-            require_once "scripts/albumManager.php";
 
             // Verificar si se encontró el compositor
             if($albums) {
                 // Mostrar la imagen del compositor
-                echo "<img src='/albums/" . $albums['id'] . ".jpg' alt='Imagen del Compositor'>";
+                echo "<img src='/albums/" . $albums['id'] . ".jpg' alt='Imagen del Album'>";
             } else {
                 echo "<p>No se encontró ningún compositor con ese ID.</p>";
             }
@@ -47,28 +52,58 @@
                     echo "<p>Compositor: " . $albums['composer'] . "</p>";
                 }
 
-                // Consulta SQL para obtener las canciones compuestas por el artista
-                $songs_sql = "SELECT * FROM songs WHERE album = :albums AND id != -1 ORDER BY dateCreation ASC";
+                if ($albums['id'] == -2) {
+                    require_once "scripts/userManager.php";
 
-                // Preparar la consulta
-                $songs_stmt = $conn->prepare($songs_sql);
-                $songs_stmt->bindParam(':albums', $albums['name']);
-                // Ejecutar la consulta
-                $songs_stmt->execute();
+                    // Verificar si la sesión no está iniciada y, si no, redirigir a login.php
+                    if (!isset($_SESSION['username'])) {
+                        header("Location: /login?error=Por favor, inicia sesión para acceder a esta página");
+                        exit();
+                    }
 
-                // Obtener las canciones compuestas por el artista
-                $songs = $songs_stmt->fetchAll(PDO::FETCH_ASSOC);
+                    // Incluir el script para obtener las canciones favoritas del usuario
+                    require_once "scripts/loadLikes.php";
 
-                // Mostrar las canciones en una tabla
-                echo "<h2>Canciones en " . $albums['name'] . "</h2>";
-                echo "<table>";
-                foreach ($songs as $song) {
-                    echo "<tr>";
-                    echo "<td>" . $song['name'] . "</td>";
-                    echo "<td><audio controls><source src='/songs/" . $song['id'] . "/song.mp3' type='audio/mpeg'>Tu navegador no soporta la reproducción de audio.</audio></td>";
-                    echo "</tr>";
+                    // Obtener las canciones favoritas del usuario
+                    $likedSongs = getLikedSongs($user_id);
+
+                    if ($likedSongs) {
+                        echo "<h2>Canciones favoritas</h2>";
+                        echo "<table>";
+                        foreach ($likedSongs as $song) {
+                            echo "<tr>";
+                            echo "<td>" . $song['name'] . "</td>";
+                            echo "<td><audio controls><source src='/songs/" . $song['id'] . "/song.mp3' type='audio/mpeg'>Tu navegador no soporta la reproducción de audio.</audio></td>";
+                            echo "</tr>";
+                        }
+                        echo "</table>";
+                    } else {
+                        echo "<p>No se encontraron canciones favoritas.</p>";
+                    }
+                } else {
+                    // Consulta SQL para obtener las canciones compuestas por el artista
+                    $songs_sql = "SELECT * FROM songs WHERE album = :albums AND id != -1 ORDER BY dateCreation ASC";
+
+                    // Preparar la consulta
+                    $songs_stmt = $conn->prepare($songs_sql);
+                    $songs_stmt->bindParam(':albums', $albums['name']);
+                    // Ejecutar la consulta
+                    $songs_stmt->execute();
+
+                    // Obtener las canciones compuestas por el artista
+                    $songs = $songs_stmt->fetchAll(PDO::FETCH_ASSOC);
+
+                    // Mostrar las canciones en una tabla
+                    echo "<h2>Canciones en " . $albums['name'] . "</h2>";
+                    echo "<table>";
+                    foreach ($songs as $song) {
+                        echo "<tr>";
+                        echo "<td>" . $song['name'] . "</td>";
+                        echo "<td><audio controls><source src='/songs/" . $song['id'] . "/song.mp3' type='audio/mpeg'>Tu navegador no soporta la reproducción de audio.</audio></td>";
+                        echo "</tr>";
+                    }
+                    echo "</table>";
                 }
-                echo "</table>";
             } else {
                 echo "<p>No se encontró ningún compositor con ese ID.</p>";
             }

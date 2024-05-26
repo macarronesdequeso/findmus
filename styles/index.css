@@ -1,47 +1,4 @@
-.homeContainer {
-    display: flex;
-    border-radius: 10px;
-    margin-inline: 1.5%;
-    margin-block: 1.5%;
-    padding: 1%;
-}
-
-.homeBar {
-    display: flex;
-    justify-content: flex-start;
-    margin-right: auto;
-    padding: 0.5%;
-}
-
-.subhomeBar {
-    display: inline-flex;
-    justify-content: end;
-    padding: 0.5%;
-}
-
-#searchInput {
-    font-size: xx-large;
-    border-radius: 10px;
-    padding-left: 20px;
-    border: 0px;
-    width: 75%;
-}
-
-#searchIco, #profileIco {
-    width: 3em;
-    margin-inline: 1.5%;
-}
-
-#searchIco {
-    margin-left: 10%;
-}
-
-.profile {
-    border-radius: 10px;
-    width: 90px !important;
-    height: 90px;
-}
-
+/* Estilos Generales */
 label {
     margin-left: 1.5%;
     display: inline-block;
@@ -61,12 +18,92 @@ form {
     flex-wrap: wrap;
 }
 
-.songList {
-    display: grid !important;
-    grid-template-columns: repeat(4, 1fr) !important;
-    gap: 1em;
+#searchInput {
+    font-size: xx-large;
+    border-radius: 10px;
+    padding-left: 20px;
+    border: 0px;
+    width: 75%;
 }
 
+@media (max-width: 600px) {
+    #searchInput {
+        margin-left: 5%;
+        width: 70%;
+        font-size: large;
+    }
+}
+
+/* Estilos del Contenedor */
+.homeContainer {
+    display: flex;
+    border-radius: 10px;
+    margin-inline: 1.5%;
+    margin-block: 1.5%;
+    padding: 1%;
+}
+
+@media (max-width: 600px) {
+    .homeContainer {
+        margin-bottom: 10%;
+    }
+}
+
+/* Estilos de la Barra de Inicio */
+.homeBar {
+    display: flex;
+    justify-content: flex-start;
+    margin-right: auto;
+    padding: 0.5%;
+}
+
+.subhomeBar {
+    display: inline-flex;
+    justify-content: end;
+    padding: 0.5%;
+}
+
+@media (max-width: 600px) {
+    .homeBar img, .subhomeBar img {
+        scale: 0.7;
+    }
+}
+
+/* Estilos de los Iconos */
+#searchIco, #profileIco {
+    width: 3em;
+    margin-inline: 1.5%;
+}
+
+#searchIco {
+    margin-left: 10%;
+}
+
+@media (max-width: 600px) {
+    #searchIco, #profileIco {
+        margin-inline: 0.5%;
+    }
+}
+
+#logoHome {
+    width: 4em;
+}
+
+/* Estilos del Perfil */
+.profile {
+    border-radius: 10px;
+    width: 90px !important;
+    height: 90px;
+}
+
+@media (max-width: 600px) {
+    .profile {
+        width: 70px !important;
+        height: 70px;
+    }
+}
+
+/* Estilos del Menú */
 .menuDiv {
     overflow: auto;
     margin-left: 1.5%;
@@ -80,6 +117,13 @@ form {
     box-sizing: border-box;
 }
 
+@media (max-width: 600px) {
+    .menuDiv input {
+        scale: 0.9;
+    }
+}
+
+/* Estilos de los Mensajes */
 .mensaje {
     margin-left: 1.5%;
     margin-right: 1.5%;
@@ -90,8 +134,11 @@ form {
     box-sizing: border-box;
 }
 
-#logoHome {
-    width: 4em;
+/* Estilos de la Lista de Canciones */
+.songList {
+    display: grid !important;
+    grid-template-columns: repeat(4, 1fr) !important;
+    gap: 1em;
 }
 
 .song-link {
@@ -122,6 +169,17 @@ form {
     opacity: 0;
 }
 
+/* Estilos de la Sección de Categorías */
+.category-section {
+    display: flex;
+    gap: 1em;
+}
+
+.category-section .song-image {
+    width: 20vh !important;
+}
+
+/* Estilos del Contenedor de Cuadrícula */
 .grid-container {
     display: grid;
     grid-template-columns: 1fr 2fr;
@@ -130,38 +188,4 @@ form {
 
 .grid-item {
     grid-column: span 1;
-}
-
-@media (max-width: 600px) {
-    .homeContainer {
-        margin-bottom: 10%;
-    }
-
-    .homeBar img, .subhomeBar img {
-        scale: 0.7;
-    }
-
-    #searchIco, #profileIco {
-        margin-inline: 0.5%;
-    }
-
-    #searchInput {
-        margin-left: 5%;
-        width: 70%;
-        font-size: large;
-    }
-
-    .profile {
-        width: 70px !important;
-        height: 70px;
-    }
-
-    .menuDiv input {
-        scale: 0.9;
-    }
-
-    form {
-        display: block;
-    }
-
 }

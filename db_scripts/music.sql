@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 25-05-2024 a las 01:46:59
+-- Tiempo de generación: 26-05-2024 a las 02:42:29
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -41,7 +41,10 @@ CREATE TABLE `albums` (
 --
 
 INSERT INTO `albums` (`id`, `name`, `composer`) VALUES
-(-1, 'No Album', 'Unknown Composer');
+(-2, 'Canciones Favoritas', 'Custom Playlist'),
+(-1, 'No Album', 'Custom Playlist'),
+(0, 'Disco Ultralounge', 'Kevin MacLeod'),
+(1, 'Comedy Scoring', 'Kevin MacLeod');
 
 -- --------------------------------------------------------
 
@@ -63,7 +66,8 @@ CREATE TABLE `composer` (
 --
 
 INSERT INTO `composer` (`id`, `name`, `dateBirth`, `dateDeath`, `bio`) VALUES
-(-1, 'Unknown Composer', NULL, NULL, 'No Bio Available'),
+(-2, 'Custom Playlist', NULL, NULL, NULL),
+(-1, 'Compositor Desconocido', NULL, NULL, 'Desconocemos quien tuvo el talento de haber creado la música que estas escuchando, así que no tenemos información del individuo'),
 (0, 'Kevin MacLeod', '1972-09-28', NULL, 'Kevin MacLeod es un compositor');
 
 -- --------------------------------------------------------
@@ -82,16 +86,15 @@ CREATE TABLE `genre` (
 --
 
 INSERT INTO `genre` (`name`) VALUES
-('Blues'),
-('Classical'),
-('Country'),
-('Electronic'),
+('Ciudad'),
+('Clásica'),
+('Electronica'),
 ('Funk'),
 ('Hip Hop'),
 ('Jazz'),
-('Other / No Genre'),
+('Otro'),
 ('Pop'),
-('Reggae'),
+('Reggaetón '),
 ('Rock');
 
 -- --------------------------------------------------------
@@ -116,9 +119,15 @@ CREATE TABLE `songs` (
 --
 
 INSERT INTO `songs` (`id`, `name`, `dateCreation`, `composer`, `album`, `genre`, `views`) VALUES
-(-1, 'No Song', NULL, 'Unknown Composer', 'No Album', 'Other / No Genre', 0),
-(0, 'Sneaky Snitch', '2007-12-17', 'Kevin MacLeod', 'No Album', 'Other / No Genre', 5),
-(1, 'Monkeys Spinning Monkeys', '2005-07-06', 'Kevin MacLeod', 'No Album', 'Other / No Genre', 9);
+(-1, 'Sin Canción', NULL, 'Compositor Desconocido', 'No Album', 'Otro', 0),
+(0, 'Sneaky Snitch', '2007-12-17', 'Kevin MacLeod', 'No Album', 'Otro', 6),
+(1, 'Monkeys Spinning Monkeys', '2005-07-06', 'Kevin MacLeod', 'No Album', 'Otro', 9),
+(2, 'Elevator', '2000-01-01', 'Kevin MacLeod', 'Disco Ultralounge', 'Jazz', 0),
+(3, 'Who Likes to Party', '2000-01-01', 'Kevin MacLeod', 'Disco Ultralounge', 'Electronica', 0),
+(4, 'Stringed Disco', '2000-01-01', 'Kevin MacLeod', 'Disco Ultralounge', 'Ciudad', 0),
+(5, 'Call of Adventure', '2000-01-01', 'Kevin MacLeod', 'Comedy Scoring', 'Clásica', 0),
+(6, 'Fun in a Bottle', '2000-01-01', 'Kevin MacLeod', 'Comedy Scoring', 'Clásica', 0),
+(7, 'The Builder', '2000-01-01', 'Kevin MacLeod', 'Comedy Scoring', 'Clásica', 1);
 
 --
 -- Índices para tablas volcadas
@@ -143,6 +152,7 @@ ALTER TABLE `composer`
 -- Indices de la tabla `genre`
 --
 ALTER TABLE `genre`
+  ADD PRIMARY KEY (`name`),
   ADD KEY `name` (`name`) USING BTREE;
 
 --
@@ -162,7 +172,7 @@ ALTER TABLE `songs`
 -- AUTO_INCREMENT de la tabla `songs`
 --
 ALTER TABLE `songs`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- Restricciones para tablas volcadas

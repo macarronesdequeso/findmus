@@ -5,7 +5,7 @@ body {
     color: #000;
 }
 
-button, input, input#file-upload-button {
+button, input, input#file-upload-button, select {
     background-color: rgba(220, 220, 220, 0.425);
     color: #000;
 }

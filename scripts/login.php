@@ -59,6 +59,7 @@ try {
                 // Guarda el nombre de usuario en la sesión
                 $_SESSION['username'] = $username;
                 // Redirige al usuario a la página de inicio
+                sleep(1);
                 header("Location: /");
                 exit(); // Detener la ejecución adicional
             } else {

@@ -1,9 +1,14 @@
+<?php 
+    // Incluir el script composerManager.php para obtener los detalles del compositor y los archivos asociados
+    require_once "scripts/composerManager.php";
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Findmus</title>
+    <title><?php echo "Findmus - " . $composer['name']; ?></title>
     <!-- Theme CSS -->
     <link rel="stylesheet" id="theme-style">
     <!-- Specific CSS -->
@@ -23,8 +28,6 @@
         <!-- Contenedor de imagen -->
         <div class="imageDisplay">
             <?php
-            // Incluir el script composerManager.php para obtener los detalles del compositor y los archivos asociados
-            require_once "scripts/composerManager.php";
 
             // Verificar si se encontró el compositor
             if($composer) {

@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     if (userId >= 0) {
         // Construir la ruta de la imagen de perfil
-        const profilePicturePath = "users/" + userId + ".png";
+        const profilePicturePath = "/users/" + userId + ".png";
 
         // Verificar si el archivo de imagen existe
         fetch(profilePicturePath, { method: 'HEAD' })
@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", function() {
                     // Agregar un evento de escucha para el clic en la imagen de perfil
                     profileIcon.addEventListener("click", function() {
                         // Redirigir a la página de preferencias
-                        window.location.href = "preferences";
+                        window.location.href = "/preferences";
                     });
 
                     console.log("OK - ID de usuario: " + userId + ", imagen de perfil encontrada.");
@@ -30,7 +30,7 @@ document.addEventListener("DOMContentLoaded", function() {
                     // Agregar un evento de escucha para el clic en la imagen de perfil
                     profileIcon.addEventListener("click", function() {
                         // Redirigir a la página de preferencias
-                        window.location.href = "preferences";
+                        window.location.href = "/preferences";
                     });
 
                     console.log("ERROR - Imagen de perfil no encontrada para el ID de usuario: " + userId);
@@ -42,7 +42,7 @@ document.addEventListener("DOMContentLoaded", function() {
     } else {
         // Si el ID de usuario no está disponible, redirigir a la página de inicio de sesión
         profileIcon.addEventListener("click", function() {
-            window.location.href = "login";
+            window.location.href = "/login";
         });
 
         console.log("ERROR - ID de usuario no disponible");

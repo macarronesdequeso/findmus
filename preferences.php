@@ -3,7 +3,7 @@ session_start();
 
 // Verificar si la sesión no está iniciada y, si no, redirigir a login.php
 if (!isset($_SESSION['username'])) {
-    header("Location: login");
+    header("Location: login?error=Por favor, inicia sesión para acceder a esta página");
     exit();
 }
 
@@ -128,16 +128,22 @@ require_once 'scripts/userManager.php';
     <?php if ($isAdmin == 1): ?>
         <label>Debug (solo administrador)</label>
         <div class="menuDiv">
-            <a href="songTest.html"><button>Song Page Test</button></a>
+            <a href="admin/uploadSong"><button>Añadir canción</button></a>
+            <a href="songTest.html"><button>Test Página Canción</button></a>
             <form action="/song" method="get">
-                <button type="submit">Go to Song...</button>
+                <button type="submit">Ir a canción...</button>
                 <br>
-                <input type="text" name="id" placeholder="Song ID">
+                <input type="text" name="id" placeholder="Canción ID">
             </form>
-            <form action="/composer.php" method="get">
-                <button type="submit">Go to Composer...</button>
+            <form action="/composer" method="get">
+                <button type="submit">Ir al compositor...</button>
                 <br>
-                <input type="text" name="id" placeholder="Composer ID">
+                <input type="text" name="id" placeholder="Compositor ID">
+            </form>
+            <form action="/album" method="get">
+                <button type="submit">Ir al álbum...</button>
+                <br>
+                <input type="text" name="id" placeholder="Álbum ID">
             </form>
             <a href="phpHealth"><button>PHP Health Check</button></a>
         </div>

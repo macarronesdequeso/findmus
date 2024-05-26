@@ -14,9 +14,9 @@ function getRandomSongByCriteria($conn, $criteria) {
                     ORDER BY songs.views DESC LIMIT 10";
             break;
         case 'by_album':
-            $sql = "SELECT DISTINCT albums.id, albums.name 
+            $sql = "SELECT DISTINCT albums.id, albums.name
                     FROM albums, songs 
-                    WHERE albums.name = songs.album 
+                    WHERE albums.name = songs.album AND albums.id != -2
                     ORDER BY songs.views DESC LIMIT 10";
             break;
         default:
@@ -35,7 +35,27 @@ function getRandomSongByCriteria($conn, $criteria) {
     return null;
 }
 
-// Configuración de la conexión a la base de datos
+function getSongsByCategory($conn, $category) {
+    $sql = "SELECT id, name FROM songs WHERE genre = :genre AND id != -1 ORDER BY id DESC LIMIT 5";
+    $stmt = $conn->prepare($sql);
+    $stmt->bindParam(':genre', $category);
+    $stmt->execute();
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+}
+
+function getRandomCategories($conn) {
+    $sql = "SELECT DISTINCT genre FROM songs WHERE genre IS NOT NULL";
+    $stmt = $conn->prepare($sql);
+    $stmt->execute();
+    $genres = $stmt->fetchAll(PDO::FETCH_COLUMN);
+
+    if (count($genres) <= 4) {
+        return $genres;
+    }
+
+    return array_rand(array_flip($genres), 4);
+}
+
 $host = "localhost";
 $username_db = "root";
 $password_db = "";
@@ -45,12 +65,18 @@ try {
     $conn = new PDO("mysql:host=$host;dbname=$database", $username_db, $password_db);
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
+    $selectedCategories = getRandomCategories($conn);
+    $categorySongs = [];
+
+    foreach ($selectedCategories as $category) {
+        $categorySongs[$category] = getSongsByCategory($conn, $category);
+    }
+
     $recentSong = getRandomSongByCriteria($conn, 'recent');
     $mostViewedSong = getRandomSongByCriteria($conn, 'most_viewed');
     $composerSong = getRandomSongByCriteria($conn, 'by_composer');
     $albumSong = getRandomSongByCriteria($conn, 'by_album');
 } catch (PDOException $e) {
-    // Manejar el error de conexión o consulta
     echo "Error: " . $e->getMessage();
 }
 ?>

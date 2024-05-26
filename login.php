@@ -22,6 +22,9 @@
     <script src="scripts/logoHome.js"></script>
 
     <div class="mainPage">
+        <div class="fullScreen">
+            <img id="loading">
+        </div>
         <div class="mainMenu">
             <img id="logoHome" class="icon" data-icon="logoText">
             <form action="scripts/login.php" method="post">
@@ -35,9 +38,9 @@
                 ?>
                 <?php } ?>
                 <h3>Nombre de usuario</h3>
-                <input type="text" name="username" id="username" placeholder="Nombre de usuario" required>
+                <input type="text" name="username" id="username" placeholder="Nombre de usuario" required minlength="3" maxlength="20">
                 <h3>Contraseña</h3>
-                <input type="password" name="password" id="password" placeholder="Contraseña" required>
+                <input type="password" name="password" id="password" placeholder="Contraseña" required minlength="8" maxlength="25" autocomplete>
                 <button type="submit">Iniciar sesión</button>
             </form>
             <br>

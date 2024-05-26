@@ -32,7 +32,7 @@
             <h4></h4>
             <input type="text" name="clave" id="clave" placeholder="Clave de seguridad" required>
             <h4>Ponga la nueva contraseña aquí</h4>
-            <input type="password" name="password" id="password" placeholder="Nueva contraseña" required minlength="8">
+            <input type="password" name="password" id="password" placeholder="Nueva contraseña" required minlength="8" maxlength="25">
             <button type="submit">Reestablecer contraseña</button>
         </form>
     </div>
