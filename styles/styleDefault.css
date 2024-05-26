@@ -50,6 +50,10 @@ input, button, select, input::file-selector-button {
     text-align: center;
 }
 
+.song-title, .song-list-title {
+    text-align: center;
+}
+
 @media screen and (max-width: 600px) {
     #indexFooter {
         width: 100%;

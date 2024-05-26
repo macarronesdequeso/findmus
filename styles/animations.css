@@ -56,7 +56,7 @@ footer {
     animation: fadeInFooter 1s;
 }
 
-.song-title {
+.song-title, .song-list-title {
     transition: opacity 0.3s ease-in-out;
 }
 
@@ -68,6 +68,6 @@ footer {
     animation: animReverseLogo 0.5s forwards;
 }
 
-.song-link:hover .song-title {
-    opacity: 0.75;
+.song-link:hover .song-title, .song-link:hover .song-list-title {
+    opacity: 1;
 }

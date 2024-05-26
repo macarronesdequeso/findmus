@@ -71,20 +71,25 @@
 
     <label>Explora</label>
     <div class="menuDiv">
+    <div class="grid2x2">
         <?php if (!empty($categorySongs)): ?>
             <?php foreach ($categorySongs as $category => $songs): ?>
-                <h3><?php echo htmlspecialchars($category); ?></h3>
                 <div class="category-section">
-                    <?php foreach ($songs as $song): ?>
-                        <a href="song?id=<?= $song['id'] ?>" class="song-link">
-                            <img class="song-image" src="songs/<?= $song['id'] ?>/cover.jpg" alt="<?= htmlspecialchars($song['name']) ?>">
-                            <p class="song-title"><?= htmlspecialchars($song['name']) ?></p>
-                        </a>
-                    <?php endforeach; ?>
+                    <h3><?php echo htmlspecialchars($category); ?></h3>
+                    <div class="songs-container">
+                        <?php foreach ($songs as $song): ?>
+                            <a href="song?id=<?= $song['id'] ?>" class="song-link">
+                                <img class="song-image" src="songs/<?= $song['id'] ?>/cover.jpg" alt="<?= htmlspecialchars($song['name']) ?>">
+                                <p class="song-list-title"><?= htmlspecialchars($song['name']) ?></p>
+                            </a>
+                        <?php endforeach; ?>
+                    </div>
                 </div>
             <?php endforeach; ?>
         <?php endif; ?>
     </div>
+    </div>
+
 
 </body>
 </html>

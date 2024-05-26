@@ -145,38 +145,54 @@ form {
     display: inline-flex;
     position: relative;
     justify-content: center;
-}
-
-.song-link .song-image {
-    width: 25vh;
+    padding: 2.5vh;
+    border-radius: 10px;
 }
 
 .song-image {
     margin: 0.5%;
     border-radius: 15px;
-    width: 20vh;
+    width: 20em;
 }
 
 .song-title {
     padding: 8px;
     border-radius: 15px;
     font-size: large;
-    width: 18vh;
+    width: 10em;
     position: absolute;
     bottom: 0;
-    margin: auto;
     overflow: auto;
     opacity: 0;
 }
 
+.song-list-title {
+    padding: 8px;
+    border-radius: 15px;
+    font-size: large;
+    width: 10em;
+    position: absolute;
+    margin-bottom: 30px;
+    bottom: 0;
+    overflow: auto;
+    opacity: 0.75;
+}
+
+
 /* Estilos de la Sección de Categorías */
 .category-section {
+    width: 100%;
+    margin-bottom: 2em;
+    overflow-x: auto;
+}
+
+.songs-container {
     display: flex;
     gap: 1em;
 }
 
 .category-section .song-image {
-    width: 20vh !important;
+    width: 15em !important;
 }
 
 /* Estilos del Contenedor de Cuadrícula */
@@ -186,6 +202,24 @@ form {
     gap: 10px;
 }
 
+.grid2x2 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1em;
+}
+
 .grid-item {
     grid-column: span 1;
+}
+
+@media (max-width: 600px) {
+    .grid2x2 {
+        display: inline !important;
+    }
+    .category-section .song-image {
+        width: 12.5em !important;
+    }
+    .song-image {
+        width: 15em !important;
+    }
 }

@@ -10,7 +10,7 @@ button, input, input#file-upload-button, select {
     color: #000;
 }
 
-.song-title {
+.song-title, .song-list-title {
     background-color: rgba(220, 220, 220, 0.9);
     color: #000;
 }
@@ -23,7 +23,7 @@ a, p, h1, h2, h3, h4, h5, h6, input::file-selector-button {
     background-color: rgba(210, 210, 210, 0.45);
 }
 
-tr:nth-child(even), input::file-selector-button {
+tr:nth-child(even), input::file-selector-button, .song-link {
     background-color: rgba(165, 165, 165, 0.425)
 }
 
