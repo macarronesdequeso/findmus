@@ -1,6 +1,7 @@
 /* Theme Name: Dark Theme */
 
 body {
+    color-scheme: dark;
     background-image: linear-gradient(to bottom, rgba(4, 24, 56, 0.85), rgba(0, 5, 54, 0.85)) !important;
     color: #fff;
 }

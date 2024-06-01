@@ -30,8 +30,6 @@ require_once 'scripts/userManager.php';
     <link rel="stylesheet" href="/styles/index.css">
     <!-- Style CSS -->
     <link rel="stylesheet" href="/styles/styleDefault.css">
-    <!-- Shadows CSS -->
-    <link rel="stylesheet" href="/styles/shadows.css">
     <!-- Animations CSS -->
     <link rel="stylesheet" href="/styles/animations.css">
     <link rel="icon" type="image/x-icon" href="/favicon.ico">

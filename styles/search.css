@@ -77,6 +77,11 @@ table td {
     font-size: x-large;
 }
 
+.center {
+    display: flex;
+    justify-content: center;
+}
+
 #coverImg {
     width: 6em;
     border-radius: 5px;
