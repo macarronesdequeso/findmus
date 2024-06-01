@@ -24,7 +24,7 @@
     <div class="mainPage">
         <div class="mainMenu">
             <img id="logoHome" class="icon" data-icon="logoText">
-            <form action="scripts/register.php" method="post">
+            <form action="scripts/registerManager.php" method="post">
                 <?php 
                 // Verifica si se pasa un mensaje de error en los parámetros de la URL
                 if (isset($_GET["error"])) { 
