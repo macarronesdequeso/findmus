@@ -90,7 +90,7 @@ table td {
     border-radius: 5px;
 }
 
-@media (max-width: 600px) {
+@media (max-height: 600px) {
     .homeContainer {
         margin-bottom: 10%;
     }

@@ -109,8 +109,8 @@ require_once 'scripts/userManager.php';
     <label>Tema</label>
     <div class="menuDiv">
         
-        <button class="theme-toggle" data="dark">Change Theme (Dark)</button>
-        <button class="theme-toggle" data="light">Change Theme (Light)</button>
+        <button class="theme-toggle" data="dark">Oscuro</button>
+        <button class="theme-toggle" data="light">Brillo</button>
 
     </div>
 
@@ -126,7 +126,6 @@ require_once 'scripts/userManager.php';
     <?php if ($isAdmin == 1): ?>
         <label>Debug (solo administrador)</label>
         <div class="menuDiv">
-            <a href="admin/uploadSong"><button>Añadir canción</button></a>
             <a href="songTest.html"><button>Test Página Canción</button></a>
             <form action="/song" method="get">
                 <button type="submit">Ir a canción...</button>
@@ -143,6 +142,14 @@ require_once 'scripts/userManager.php';
                 <br>
                 <input type="text" name="id" placeholder="Álbum ID">
             </form>
+
+            <a href="admin/uploadSong"><button>Añadir canción</button></a>
+            <a href="admin/uploadAlbum"><button>Añadir álbum</button></a>
+            <a href="admin/uploadComposer"><button>Añadir compositor</button></a>
+            <a href="admin/deleteSong"><button>Eliminar canción</button></a>
+            <a href="admin/deleteAlbum"><button>Eliminar álbum</button></a>
+            <a href="admin/deleteComposer"><button>Eliminar compositor</button></a>
+
             <a href="phpHealth"><button>PHP Health Check</button></a>
         </div>
     <?php endif; ?>

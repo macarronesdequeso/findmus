@@ -123,17 +123,6 @@ form {
     }
 }
 
-/* Estilos de los Mensajes */
-.mensaje {
-    margin-left: 1.5%;
-    margin-right: 1.5%;
-    height: auto;
-    padding: 1.4em;
-    border-radius: 10px;
-    margin-bottom: 20px;
-    box-sizing: border-box;
-}
-
 /* Estilos de la Lista de Canciones */
 .songList {
     display: grid !important;
@@ -161,6 +150,7 @@ form {
     font-size: large;
     width: 10em;
     position: absolute;
+    margin-bottom: 28px;
     bottom: 0;
     overflow: auto;
     opacity: 0;

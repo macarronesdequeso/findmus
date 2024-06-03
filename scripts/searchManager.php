@@ -30,8 +30,8 @@
 
         // Construye la consulta SQL basada en el tipo
         if ($type == 'composer') {
-            $sql = "SELECT * FROM composer WHERE id > -1 AND (name LIKE ?) ORDER BY name $order LIMIT ? OFFSET ?";
-            $count_sql = "SELECT COUNT(*) AS total FROM composer WHERE name LIKE ?";
+            $sql = "SELECT * FROM composers WHERE id > -1 AND (name LIKE ?) ORDER BY name $order LIMIT ? OFFSET ?";
+            $count_sql = "SELECT COUNT(*) AS total FROM composers WHERE name LIKE ?";
         } elseif ($type == 'albums') {
             $sql = "SELECT * FROM albums WHERE id > -1  AND (name LIKE ?) ORDER BY name $order LIMIT ? OFFSET ?";
             $count_sql = "SELECT COUNT(*) AS total FROM albums WHERE name LIKE ?";
@@ -66,7 +66,7 @@
             if ($type == 'composer') {
                 echo "<tr><th>Imagen</th><th>Nombre</th><th>Fecha de Nacimiento</th><th>Fecha de Muerte</th><th>Biografía</th></tr>";
             } elseif ($type == 'albums') {
-                echo "<tr><th>Imagen</th><th>Nombre</th><th>Compositor</th></tr>";
+                echo "<tr><th>Imagen</th><th>Nombre</th><th>Fecha de Lanzamiento</th><th>Compositor</th></tr>";
             } elseif ($type == 'songs') {
                 echo "<tr><th>Imagen</th><th>Nombre</th><th>Compositor</th><th>Album</th><th>Fecha creación</th><th>Vistas</th></tr>";
             }
@@ -83,6 +83,7 @@
                 } elseif ($type == 'albums') {
                     echo "<td><img id='coverImg' src='/albums/" . htmlspecialchars($row["id"]) . ".jpg' alt='Imagen del álbum'></td>";
                     echo "<td><a href='/album?id=" . htmlspecialchars($row["id"]) . "'>" . htmlspecialchars($row["name"]) . "</a></td>";
+                    echo "<td>" . (!empty($row["date"]) ? htmlspecialchars($row["date"]) : "No registrado") . "</td>";
                     echo "<td>" . (!empty($row["composer"]) ? htmlspecialchars($row["composer"]) : "No registrado") . "</td>";
                 } elseif ($type == 'songs') {
                     echo "<td><img id='coverImg' src='/songs/" . htmlspecialchars($row["id"]) . "/cover.jpg' alt='Imagen de la canción'></td>";

@@ -26,19 +26,23 @@ body {
     z-index: 1;
 }
 
-#topLogo {
-    display: block;
-    margin: auto;
-    padding-top: 10px;
+.logo {
+    display: flex;
+    justify-content: center;
 }
 
-#searchIco, #logoHome {
-    margin-bottom: 4em;
+#like {
+    margin-left: 1em;
+    width: 2em;
 }
 
-#searchIco, #profileIco {
-    display: grid;
-    width: 4em;
+#logoHome {
+    margin: 0.5vw;
+    width: 35vh;
+}
+
+.audioContainer {
+    display: flex;
 }
 
 .imageContainer {

@@ -21,7 +21,7 @@ if(isset($_GET['id']) && is_numeric($_GET['id'])) {
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
         // Consulta SQL para obtener los detalles del compositor con el ID proporcionado
-        $sql = "SELECT * FROM composer WHERE id = :id";
+        $sql = "SELECT * FROM composers WHERE id = :id";
 
         // Preparar la consulta
         $stmt = $conn->prepare($sql);

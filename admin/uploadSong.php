@@ -150,7 +150,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
                 // Consulta para obtener los compositores
-                $sql_composers = "SELECT name FROM composer";
+                $sql_composers = "SELECT name FROM composers";
                 $stmt_composers = $conn->prepare($sql_composers);
                 $stmt_composers->execute();
                 $composers = $stmt_composers->fetchAll(PDO::FETCH_COLUMN);

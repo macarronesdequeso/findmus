@@ -21,6 +21,7 @@
 </head>
 <body>
     <script src="scripts/themeManager.js"></script>
+    <script src="scripts/logoHome.js"></script>
     <script src="scripts/songPlaylistManager.js"></script>
     <div class="imageContainer">
         <!-- Contenedor de imagen -->
@@ -39,6 +40,9 @@
         
         <!-- Contenedor de detalles de compositor y canciones -->
         <div class="songDetails">
+            <div class="logo mensaje">
+                <img id="logoHome" class="icon" data-icon="logoText">
+            </div>
             <?php
             // Verificar si se encontró el compositor
             if($composer) {
@@ -71,7 +75,7 @@
                 echo "<table>";
                 foreach ($songs as $song) {
                     echo "<tr>";
-                    echo "<td>" . $song['name'] . "</td>";
+                    echo "<td><a href='song?id=" . $song['id'] . "'>" . $song['name'] . "</a></td>";
                     echo "<td><audio controls><source src='/songs/" . $song['id'] . "/song.mp3' type='audio/mpeg'>Tu navegador no soporta la reproducción de audio.</audio></td>";
                     echo "</tr>";
                 }

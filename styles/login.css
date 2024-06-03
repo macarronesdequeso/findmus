@@ -1,7 +1,3 @@
-html, body {
-    height: 100vh;
-}
-
 html {
     background: url('/styles/img/bg.avif') center/cover no-repeat;
 }
@@ -27,7 +23,7 @@ button {
 }
 
 footer {
-    width: 305px;
+    width: 15em;
 }
 
 footer h5 {
@@ -39,10 +35,6 @@ footer h5 {
 }
 
 @media (max-width: 900px) {
-
-    html, body {
-        height: 94vh;
-    }
 
     .mainMenu {
         margin-bottom: 10vh;

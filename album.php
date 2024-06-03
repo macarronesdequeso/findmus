@@ -23,6 +23,7 @@ require_once "scripts/albumManager.php";
 </head>
 <body>
     <script src="scripts/themeManager.js"></script>
+    <script src="scripts/logoHome.js"></script>
     <script src="scripts/songPlaylistManager.js"></script>
     <div class="imageContainer">
         <!-- Contenedor de imagen -->
@@ -41,6 +42,9 @@ require_once "scripts/albumManager.php";
         
         <!-- Contenedor de detalles de compositor y canciones -->
         <div class="songDetails">
+            <div class="logo mensaje">
+                <img id="logoHome" class="icon" data-icon="logoText">
+            </div>
             <?php
             // Verificar si se encontró el compositor
             if($albums) {
@@ -48,6 +52,9 @@ require_once "scripts/albumManager.php";
                 echo "<h1>" . $albums['name'] . "</h1>";
                 if ($albums['composer'] != null) {
                     echo "<p>Compositor: " . $albums['composer'] . "</p>";
+                }
+                if ($albums['date'] != null) {
+                    echo "<p>Fecha de lanzamiento: " . $albums['date'] . "</p>";
                 }
 
                 if ($albums['id'] == -2) {
@@ -70,7 +77,7 @@ require_once "scripts/albumManager.php";
                         echo "<table>";
                         foreach ($likedSongs as $song) {
                             echo "<tr>";
-                            echo "<td>" . $song['name'] . "</td>";
+                            echo "<td><a href='song?id=" . $song['id'] . "'>" . $song['name'] . "</a></td>";
                             echo "<td><audio controls><source src='/songs/" . $song['id'] . "/song.mp3' type='audio/mpeg'>Tu navegador no soporta la reproducción de audio.</audio></td>";
                             echo "</tr>";
                         }
@@ -96,7 +103,7 @@ require_once "scripts/albumManager.php";
                     echo "<table>";
                     foreach ($songs as $song) {
                         echo "<tr>";
-                        echo "<td>" . $song['name'] . "</td>";
+                        echo "<td><a href='song?id=" . $song['id'] . "'>" . $song['name'] . "</a></td>";
                         echo "<td><audio controls><source src='/songs/" . $song['id'] . "/song.mp3' type='audio/mpeg'>Tu navegador no soporta la reproducción de audio.</audio></td>";
                         echo "</tr>";
                     }
