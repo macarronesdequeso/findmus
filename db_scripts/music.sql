@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 26-05-2024 a las 02:42:29
+-- Tiempo de generación: 05-06-2024 a las 01:22:01
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -33,6 +33,7 @@ DROP TABLE IF EXISTS `albums`;
 CREATE TABLE `albums` (
   `id` int(11) NOT NULL,
   `name` varchar(100) NOT NULL,
+  `date` date DEFAULT NULL,
   `composer` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -40,20 +41,20 @@ CREATE TABLE `albums` (
 -- Volcado de datos para la tabla `albums`
 --
 
-INSERT INTO `albums` (`id`, `name`, `composer`) VALUES
-(-2, 'Canciones Favoritas', 'Custom Playlist'),
-(-1, 'No Album', 'Custom Playlist'),
-(0, 'Disco Ultralounge', 'Kevin MacLeod'),
-(1, 'Comedy Scoring', 'Kevin MacLeod');
+INSERT INTO `albums` (`id`, `name`, `date`, `composer`) VALUES
+(-2, 'Canciones Favoritas', NULL, 'Custom Playlist'),
+(-1, 'No Album', NULL, 'Custom Playlist'),
+(0, 'Disco Ultralounge', '2005-01-01', 'Kevin MacLeod'),
+(1, 'Comedy Scoring', '2007-01-01', 'Kevin MacLeod');
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `composer`
+-- Estructura de tabla para la tabla `composers`
 --
 
-DROP TABLE IF EXISTS `composer`;
-CREATE TABLE `composer` (
+DROP TABLE IF EXISTS `composers`;
+CREATE TABLE `composers` (
   `id` int(11) NOT NULL,
   `name` varchar(100) NOT NULL,
   `dateBirth` date DEFAULT NULL,
@@ -62,10 +63,10 @@ CREATE TABLE `composer` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Volcado de datos para la tabla `composer`
+-- Volcado de datos para la tabla `composers`
 --
 
-INSERT INTO `composer` (`id`, `name`, `dateBirth`, `dateDeath`, `bio`) VALUES
+INSERT INTO `composers` (`id`, `name`, `dateBirth`, `dateDeath`, `bio`) VALUES
 (-2, 'Custom Playlist', NULL, NULL, NULL),
 (-1, 'Compositor Desconocido', NULL, NULL, 'Desconocemos quien tuvo el talento de haber creado la música que estas escuchando, así que no tenemos información del individuo'),
 (0, 'Kevin MacLeod', '1972-09-28', NULL, 'Kevin MacLeod es un compositor');
@@ -120,14 +121,14 @@ CREATE TABLE `songs` (
 
 INSERT INTO `songs` (`id`, `name`, `dateCreation`, `composer`, `album`, `genre`, `views`) VALUES
 (-1, 'Sin Canción', NULL, 'Compositor Desconocido', 'No Album', 'Otro', 0),
-(0, 'Sneaky Snitch', '2007-12-17', 'Kevin MacLeod', 'No Album', 'Otro', 6),
-(1, 'Monkeys Spinning Monkeys', '2005-07-06', 'Kevin MacLeod', 'No Album', 'Otro', 9),
-(2, 'Elevator', '2000-01-01', 'Kevin MacLeod', 'Disco Ultralounge', 'Jazz', 0),
-(3, 'Who Likes to Party', '2000-01-01', 'Kevin MacLeod', 'Disco Ultralounge', 'Electronica', 0),
-(4, 'Stringed Disco', '2000-01-01', 'Kevin MacLeod', 'Disco Ultralounge', 'Ciudad', 0),
-(5, 'Call of Adventure', '2000-01-01', 'Kevin MacLeod', 'Comedy Scoring', 'Clásica', 0),
-(6, 'Fun in a Bottle', '2000-01-01', 'Kevin MacLeod', 'Comedy Scoring', 'Clásica', 0),
-(7, 'The Builder', '2000-01-01', 'Kevin MacLeod', 'Comedy Scoring', 'Clásica', 1);
+(0, 'Sneaky Snitch', '2007-12-17', 'Kevin MacLeod', 'No Album', 'Otro', 18),
+(1, 'Monkeys Spinning Monkeys', '2005-07-06', 'Kevin MacLeod', 'No Album', 'Otro', 18),
+(2, 'Elevator', '2000-01-01', 'Kevin MacLeod', 'Disco Ultralounge', 'Jazz', 24),
+(3, 'Who Likes to Party', '2000-01-01', 'Kevin MacLeod', 'Disco Ultralounge', 'Electronica', 2),
+(4, 'Stringed Disco', '2000-01-01', 'Kevin MacLeod', 'Disco Ultralounge', 'Ciudad', 72),
+(5, 'Call of Adventure', '2000-01-01', 'Kevin MacLeod', 'Comedy Scoring', 'Clásica', 1),
+(6, 'Fun in a Bottle', '2000-01-01', 'Kevin MacLeod', 'Comedy Scoring', 'Clásica', 29),
+(7, 'The Builder', '2000-01-01', 'Kevin MacLeod', 'Comedy Scoring', 'Clásica', 19);
 
 --
 -- Índices para tablas volcadas
@@ -137,14 +138,14 @@ INSERT INTO `songs` (`id`, `name`, `dateCreation`, `composer`, `album`, `genre`,
 -- Indices de la tabla `albums`
 --
 ALTER TABLE `albums`
-  ADD PRIMARY KEY (`id`),
+  ADD PRIMARY KEY (`id`) USING BTREE,
   ADD KEY `composer` (`composer`),
   ADD KEY `name` (`name`) USING BTREE;
 
 --
--- Indices de la tabla `composer`
+-- Indices de la tabla `composers`
 --
-ALTER TABLE `composer`
+ALTER TABLE `composers`
   ADD PRIMARY KEY (`id`),
   ADD KEY `name` (`name`) USING BTREE;
 
@@ -161,12 +162,24 @@ ALTER TABLE `genre`
 ALTER TABLE `songs`
   ADD PRIMARY KEY (`id`),
   ADD KEY `composer` (`composer`),
-  ADD KEY `album` (`album`),
-  ADD KEY `genre` (`genre`);
+  ADD KEY `genre` (`genre`),
+  ADD KEY `fk_album_name` (`album`);
 
 --
 -- AUTO_INCREMENT de las tablas volcadas
 --
+
+--
+-- AUTO_INCREMENT de la tabla `albums`
+--
+ALTER TABLE `albums`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT de la tabla `composers`
+--
+ALTER TABLE `composers`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `songs`
@@ -182,14 +195,14 @@ ALTER TABLE `songs`
 -- Filtros para la tabla `albums`
 --
 ALTER TABLE `albums`
-  ADD CONSTRAINT `albums_ibfk_1` FOREIGN KEY (`composer`) REFERENCES `composer` (`name`);
+  ADD CONSTRAINT `albums_ibfk_1` FOREIGN KEY (`composer`) REFERENCES `composers` (`name`);
 
 --
 -- Filtros para la tabla `songs`
 --
 ALTER TABLE `songs`
-  ADD CONSTRAINT `songs_ibfk_1` FOREIGN KEY (`composer`) REFERENCES `composer` (`name`),
-  ADD CONSTRAINT `songs_ibfk_2` FOREIGN KEY (`album`) REFERENCES `albums` (`name`),
+  ADD CONSTRAINT `fk_album_name` FOREIGN KEY (`album`) REFERENCES `albums` (`name`),
+  ADD CONSTRAINT `songs_ibfk_1` FOREIGN KEY (`composer`) REFERENCES `composers` (`name`),
   ADD CONSTRAINT `songs_ibfk_3` FOREIGN KEY (`genre`) REFERENCES `genre` (`name`);
 COMMIT;
 

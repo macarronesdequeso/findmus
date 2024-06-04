@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 26-05-2024 a las 02:42:40
+-- Tiempo de generación: 05-06-2024 a las 01:23:36
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -67,7 +67,7 @@ CREATE TABLE `users_data` (
 --
 
 INSERT INTO `users_data` (`id`, `firstName`, `lastName`, `dateBirth`, `country`, `liked_songs`) VALUES
-(0, 'Administrador', '', NULL, '', '1');
+(0, 'Administrador', '', '0000-00-00', '', ',0');
 
 --
 -- Índices para tablas volcadas
@@ -93,7 +93,7 @@ ALTER TABLE `users_data`
 -- AUTO_INCREMENT de la tabla `users_cred`
 --
 ALTER TABLE `users_cred`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- Restricciones para tablas volcadas
