@@ -10,8 +10,6 @@
     <link rel="stylesheet" href="/styles/login.css">
     <!-- Style CSS -->
     <link rel="stylesheet" href="/styles/styleDefault.css">
-    <!-- Shadows CSS -->
-    <link rel="stylesheet" href="/styles/shadows.css">
     <!-- Animations CSS -->
     <link rel="stylesheet" href="/styles/animations.css">
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
@@ -20,7 +18,7 @@
     <script src="scripts/themeManager.js"></script>
     <div class="mainMenu">
         <img id="logoHome" class="icon" data-icon="logoText">
-        <form action="scripts/recover.php" method="post">
+        <form action="scripts/recoverManager.php" method="post">
             <?php 
                 // Verifica si se pasa un mensaje de error en los parámetros de la URL
                 if (isset($_GET["error"])) { 

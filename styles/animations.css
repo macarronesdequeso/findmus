@@ -26,13 +26,13 @@
     }
 
     100% {
-        transform: scale(1.1);
+        transform: scale(1.05);
     }
 }
 
 @keyframes animReverseLogo {
     0% {
-        transform: scale(1.1);
+        transform: scale(1.05);
     }
 
     100% {
@@ -52,7 +52,7 @@
     animation: fadeIn 1s;
 }
 
-footer {
+#loginScreen {
     animation: fadeInFooter 1s;
 }
 

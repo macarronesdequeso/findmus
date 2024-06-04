@@ -8,15 +8,15 @@ function getRandomSongByCriteria($conn, $criteria) {
             $sql = "SELECT DISTINCT id, name FROM songs WHERE id != -1 ORDER BY views DESC LIMIT 10";
             break;
         case 'by_composer':
-            $sql = "SELECT DISTINCT composer.id, composer.name 
-                    FROM composer, songs 
-                    WHERE composer.name = songs.composer AND composer.id != -1
+            $sql = "SELECT DISTINCT composers.id, composers.name 
+                    FROM composers, songs 
+                    WHERE composers.name = songs.composer AND composers.id > -1
                     ORDER BY songs.views DESC LIMIT 10";
             break;
         case 'by_album':
             $sql = "SELECT DISTINCT albums.id, albums.name
                     FROM albums, songs 
-                    WHERE albums.name = songs.album AND albums.id != -2
+                    WHERE albums.name = songs.album AND albums.id > -1
                     ORDER BY songs.views DESC LIMIT 10";
             break;
         default:

@@ -1,0 +1,33 @@
+/* Theme Name: Light Theme */
+
+body, body::-webkit-scrollbar {
+    color-scheme: light;
+    background-image: linear-gradient(to bottom, rgba(139, 255, 158, 0.85), rgba(14, 255, 34, 0.85)) !important;
+    color: #000;
+}
+
+button, input, input#file-upload-button, select {
+    background-color: rgba(220, 220, 220, 0.425);
+    color: #000;
+}
+
+.song-title, .song-list-title {
+    background-color: rgba(220, 220, 220, 0.9);
+    color: #000;
+}
+
+a, p, h1, h2, h3, h4, h5, h6, input::file-selector-button {
+    color: #000;
+}
+
+.mainMenu, footer, .homeContainer, .menuDiv, label, textarea, .songDetails, .mensaje {
+    background-color: rgba(210, 210, 210, 0.45);
+}
+
+tr:nth-child(even), input::file-selector-button, .song-link {
+    background-color: rgba(165, 165, 165, 0.425)
+}
+
+tr:nth-child(odd), .imageDisplay {
+    background-color: rgba(190, 190, 190, 0.43);
+}

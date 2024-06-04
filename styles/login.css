@@ -1,5 +1,5 @@
 html, body {
-    height: 100vh;
+    height: 100dvh;
 }
 
 html {
@@ -27,7 +27,7 @@ button {
 }
 
 footer {
-    width: 305px;
+    width: 15em;
 }
 
 footer h5 {
@@ -40,12 +40,8 @@ footer h5 {
 
 @media (max-width: 900px) {
 
-    html, body {
-        height: 94vh;
-    }
-
     .mainMenu {
-        margin-bottom: 10vh;
+        margin-bottom: 10dvh;
     }
 
     footer {

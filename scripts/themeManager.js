@@ -7,18 +7,20 @@ function fetchTheme() {
 // Funcion: Aplica el tema
 function applyTheme(theme) {
     const themePath = theme.toLowerCase() + 'Theme'; // darkTheme, lightTheme...
-    const iconsPath = `/styles/themes/${themePath}`;
+    
+    // Variable para almacenar el nombre del tema modificado
+    let modifiedThemePath;
 
+    if (!themePath.includes("theme")) {
+        if (themePath.includes("dark")) modifiedThemePath = "darkTheme";
+        else if (themePath.includes("light")) modifiedThemePath = "lightTheme";
+    }
+    
+    const iconsPath = `/styles/themes/${modifiedThemePath}`;
     applyIconsPath(iconsPath);
 
     const themeStyleLink = document.getElementById('theme-style');
     themeStyleLink.href = `/styles/themes/${themePath}/theme.css`;
-}
-
-// Funcion: Spinner de carga
-function showSpinner() {
-    const spinner = document.getElementById('loading');
-    loading.setAttribute('src', `${path}/loading.gif`);
 }
 
 // Aplicar iconos

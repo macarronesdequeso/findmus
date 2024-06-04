@@ -30,8 +30,6 @@ require_once 'scripts/userManager.php';
     <link rel="stylesheet" href="/styles/index.css">
     <!-- Style CSS -->
     <link rel="stylesheet" href="/styles/styleDefault.css">
-    <!-- Shadows CSS -->
-    <link rel="stylesheet" href="/styles/shadows.css">
     <!-- Animations CSS -->
     <link rel="stylesheet" href="/styles/animations.css">
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
@@ -68,40 +66,75 @@ require_once 'scripts/userManager.php';
     }
     ?>
 
+    <?php
+    // Manejar la limpieza de favoritos
+    if (isset($_POST['clearFavorites'])) {
+        // Asegurarse de que el usuario esté autenticado
+        if (isset($_SESSION['username'])) {
+            // Obtener el ID del usuario actual
+            $user_id = isset($_POST['user_id']);
 
-    <label>Foto de perfil</label>
+            // Actualizar la columna liked_songs a NULL para el usuario actual
+            $sql = "UPDATE users_data SET liked_songs = NULL WHERE id = :user_id";
+
+            try {
+                // Preparar y ejecutar la consulta
+                $stmt = $conn->prepare($sql);
+                $stmt->bindParam(':user_id', $user_id);
+                $stmt->execute();
+
+                // Redirigir al usuario a la página principal o a donde desees
+                header("Location: /preferences?success=Se han limpiado tus favoritos con éxito");
+                exit();
+            } catch (PDOException $e) {
+                // Manejar errores
+                header("Location: /preferences?error=Error al limpiar tus favoritos");
+            }
+        }
+    }
+    ?>
+
+    <label>Tus favoritos</label>
     <div class="menuDiv">
-
-        <form action="scripts/pfpUpload.php" method="post" enctype="multipart/form-data">
-            <input type="file" name="profilePicture" accept="image/*">
-            <input type="hidden" name="user_id" value="<?php echo isset($user_id) ? $user_id : '-1'; ?>">
-            <button type="submit" name="submit">Guardar foto de perfil</button>
+        <a href="/album?id=-2"><button>Ver tus favoritos</button></a>
+        <form method="post">
+            <input type="hidden" name="id" value="<?php echo $user_id; ?>">
+            <button type="submit" name="clearFavorites" id="clearFavorites">Limpiar favoritos</button>
         </form>
-
     </div>
 
     <label>Información del usuario</label>
-        <div class="menuDiv">
+            <div class="menuDiv">
+                <label>Foto de perfil</label>
+                <div class="menuDiv">
+
+                    <form action="scripts/pfpUpload.php" method="post" enctype="multipart/form-data">
+                        <input type="file" name="profilePicture" accept="image/*">
+                        <input type="hidden" name="user_id" value="<?php echo isset($user_id) ? $user_id : '-1'; ?>">
+                        <button type="submit" name="submit">Guardar foto de perfil</button>
+                    </form>
+
+                </div>
             <form action="scripts/updateUser.php" method="post">
                 <input type="hidden" name="id" value="<?php echo $user_id; ?>">
                 <div class="grid-container">
-                <div class="grid-item">
+                <div class="grid-item mensaje">
                     <h3>Nombre de usuario:</h3>
                     <input type="text" id="firstName" placeholder="Nombre" name="firstName" value="<?php echo $user_data['firstName']; ?>">
                 </div>
-                <div class="grid-item">
+                <div class="grid-item mensaje">
                     <h3>Apellido:</h3>
                     <input type="text" id="lastName" placeholder="Apellido" name="lastName" value="<?php echo $user_data['lastName']; ?>">
                 </div>
-                <div class="grid-item">
+                <div class="grid-item mensaje">
                     <h3>Fecha de Nacimiento:</h3>
                     <input type="date" id="dateBirth" name="dateBirth" value="<?php echo $user_data['dateBirth']; ?>">
                 </div>
-                <div class="grid-item">
+                <div class="grid-item mensaje">
                     <h3>País:</h3>
                     <input type="text" id="country" placeholder="País" name="country" value="<?php echo $user_data['country']; ?>">
-                    <button type="submit">Actualizar Información</button>
                 </div>
+                <button type="submit">Actualizar Información</button>
                 <div class="grid-item">
                 </div>
             </div>
@@ -110,10 +143,20 @@ require_once 'scripts/userManager.php';
 
     <label>Tema</label>
     <div class="menuDiv">
-        
-        <button class="theme-toggle" data="dark">Change Theme (Dark)</button>
-        <button class="theme-toggle" data="light">Change Theme (Light)</button>
-
+            <div class="grid-item">
+                <label>Azul (predeterminado)</label>
+                <div class="menuDiv">
+                    <button class="theme-toggle" data="dark">Oscuro</button>
+                    <button class="theme-toggle" data="light">Brillo</button>
+                </div>
+            </div>
+            <div class="grid-item">
+                <label>Verde</label>
+                <div class="menuDiv">
+                    <button class="theme-toggle" data="darkGreen">Oscuro</button>
+                    <button class="theme-toggle" data="lightGreen">Brillo</button>
+                </div>
+            </div>
     </div>
 
     <label>Cuenta</label>
@@ -128,7 +171,6 @@ require_once 'scripts/userManager.php';
     <?php if ($isAdmin == 1): ?>
         <label>Debug (solo administrador)</label>
         <div class="menuDiv">
-            <a href="admin/uploadSong"><button>Añadir canción</button></a>
             <a href="songTest.html"><button>Test Página Canción</button></a>
             <form action="/song" method="get">
                 <button type="submit">Ir a canción...</button>
@@ -145,6 +187,14 @@ require_once 'scripts/userManager.php';
                 <br>
                 <input type="text" name="id" placeholder="Álbum ID">
             </form>
+
+            <a href="admin/uploadSong"><button>Añadir canción</button></a>
+            <a href="admin/uploadAlbum"><button>Añadir álbum</button></a>
+            <a href="admin/uploadComposer"><button>Añadir compositor</button></a>
+            <a href="admin/deleteSong"><button>Eliminar canción</button></a>
+            <a href="admin/deleteAlbum"><button>Eliminar álbum</button></a>
+            <a href="admin/deleteComposer"><button>Eliminar compositor</button></a>
+
             <a href="phpHealth"><button>PHP Health Check</button></a>
         </div>
     <?php endif; ?>

@@ -3,41 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Findmus</title>
+    <title>Findmus - Nombre de la Canción</title>
     <!-- Theme CSS -->
     <link rel="stylesheet" id="theme-style">
     <!-- Specific CSS -->
     <link rel="stylesheet" href="/styles/song.css">
     <!-- Style CSS -->
     <link rel="stylesheet" href="/styles/styleDefault.css">
-    <!-- Shadows CSS -->
-    <link rel="stylesheet" href="/styles/shadows.css">
     <!-- Animations CSS -->
     <link rel="stylesheet" href="/styles/animations.css">
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
 </head>
 <body>
     <script src="scripts/themeManager.js"></script>
-    
+    <script src="scripts/logoHome.js"></script>
     <div class="imageContainer">
         <!-- Contenedor de imagen -->
         <div class="imageDisplay">
-            <img src="/songs/0/cover.jpg" alt="Portada del Álbum">
+            <!-- Mostrar la imagen de la portada del álbum -->
+            <img src="/songs/0/cover.jpg" alt="Portada del Canción">
         </div>
         
         <!-- Contenedor de detalles de canción -->
         <div class="songDetails">
-            <h1>Nombre de la canción</h1>
-            <p>Fecha de Creación: 2024-05-05</p>
-            <p>Compositor: Nombre del compositor</p>
-            <p>Vistas: 100</p>
-            
-            <!-- Reproductor de audio -->
-            <audio controls>
-                <source src="/songs/0/song.mp3" type="audio/mpeg">
-                Tu navegador no soporta la reproducción de audio.
-            </audio>
+            <div class="logo mensaje">
+                <img id="logoHome" class="icon" data-icon="logoText">
+            </div>
+            <!-- Mostrar los detalles de la canción -->
+            <h1>Nombre de la Canción</h1>
+            <p>Fecha de Creación: 2024-01-01</p>
+            <p>Compositor: Nombre del Compositor</p>
+            <p>Género: Género de la Canción</p>
+            <p>Vistas: 12345</p>
+
+            <!-- Reproducir el audio de la canción -->
+            <div class='audioContainer'>
+                <audio controls autoplay>
+                    <source src="/songs/0/song.mp3" type="audio/mpeg">
+                    Tu navegador no soporta la reproducción de audio.
+                </audio>
+                <img id="like" class="icon" data-icon="like">
+            </div>
         </div>
     </div>
-    </body>
+</body>
 </html>

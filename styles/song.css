@@ -26,19 +26,26 @@ body {
     z-index: 1;
 }
 
-#topLogo {
-    display: block;
-    margin: auto;
-    padding-top: 10px;
+.logo {
+    display: flex;
+    justify-content: center;
 }
 
-#searchIco, #logoHome {
-    margin-bottom: 4em;
+#likeContainer {
+    margin-left: 1em;
 }
 
-#searchIco, #profileIco {
-    display: grid;
-    width: 4em;
+#like {
+    width: 2em;
+}
+
+#logoHome {
+    margin: 0.5vw;
+    width: 25dvh;
+}
+
+.audioContainer {
+    display: flex;
 }
 
 .imageContainer {
@@ -77,6 +84,7 @@ table {
     width: 100%;
     border-collapse: collapse;
     border-radius: 10px;
+    text-align: center;
 }
 
 table th, table td {
@@ -85,6 +93,7 @@ table th, table td {
 
 table td {
     font-size: x-large;
+    justify-items: center;
 }
 
 @media screen and (max-width: 800px) {
@@ -121,9 +130,5 @@ table td {
 
     table td {
         font-size: medium;
-    }
-
-    audio {
-        width: 50vw;
     }
 }

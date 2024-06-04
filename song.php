@@ -1,6 +1,7 @@
 <?php
     // Incluir el script songManager.php para obtener los detalles de la canción y los archivos asociados
     require_once "scripts/songManager.php";
+    require_once "scripts/userManager.php";
 ?>
 
 <!DOCTYPE html>
@@ -15,14 +16,13 @@
     <link rel="stylesheet" href="/styles/song.css">
     <!-- Style CSS -->
     <link rel="stylesheet" href="/styles/styleDefault.css">
-    <!-- Shadows CSS -->
-    <link rel="stylesheet" href="/styles/shadows.css">
     <!-- Animations CSS -->
     <link rel="stylesheet" href="/styles/animations.css">
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
 </head>
 <body>
     <script src="scripts/themeManager.js"></script>
+    <script src="scripts/logoHome.js"></script>
     <div class="imageContainer">
         <!-- Contenedor de imagen -->
         <div class="imageDisplay">
@@ -39,6 +39,9 @@
         
         <!-- Contenedor de detalles de canción -->
         <div class="songDetails">
+            <div class="logo mensaje">
+                <img id="logoHome" class="icon" data-icon="logoText">
+            </div>
             <?php
             // Verificar si se encontró la canción
             if($song) {
@@ -50,7 +53,7 @@
                 echo "<p>Vistas: " . $song['views'] . "</p>";
 
                 // Reproducir el audio de la canción
-                echo "<audio controls autoplay>";
+                echo "<div class='audioContainer'><audio controls autoplay>";
                 echo "<source src='" . $song_path . "' type='audio/mpeg'>";
                 echo "Tu navegador no soporta la reproducción de audio.";
                 echo "</audio>";
@@ -58,6 +61,8 @@
                 echo "<p>No se encontró ninguna canción con ese ID.</p>";
             }
             ?>
+            <?php require_once "scripts/likedManager.php"; ?>
+        </div>
         </div>
     </div>
 </body>

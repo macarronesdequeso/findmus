@@ -44,6 +44,7 @@
 
 .resultsTable {
     overflow: auto;
+    text-align: center;
 }
 
 input, button {
@@ -57,6 +58,13 @@ input, button {
     padding: 1.4em;
     border-radius: 10px;
     margin-bottom: 20px;
+}
+
+.pagination {
+    padding: 5px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-items: center;
 }
 
 #logoHome {
@@ -82,7 +90,7 @@ table td {
     border-radius: 5px;
 }
 
-@media (max-width: 600px) {
+@media (max-height: 600px) {
     .homeContainer {
         margin-bottom: 10%;
     }
