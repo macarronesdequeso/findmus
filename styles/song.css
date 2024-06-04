@@ -31,14 +31,17 @@ body {
     justify-content: center;
 }
 
-#like {
+#likeContainer {
     margin-left: 1em;
+}
+
+#like {
     width: 2em;
 }
 
 #logoHome {
     margin: 0.5vw;
-    width: 35vh;
+    width: 25dvh;
 }
 
 .audioContainer {

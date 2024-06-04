@@ -48,7 +48,7 @@
     
     <footer id="loginScreen">
         <h4>¿No tienes cuenta? <a href="register">Regístrate</a></h4>
-        <h5>Findmus © 2024</h5>
+        <h5>Findmus &copy 2024</h5>
     </footer>
     
 </body>

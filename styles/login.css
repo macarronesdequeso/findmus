@@ -1,3 +1,7 @@
+html, body {
+    height: 100dvh;
+}
+
 html {
     background: url('/styles/img/bg.avif') center/cover no-repeat;
 }
@@ -37,7 +41,7 @@ footer h5 {
 @media (max-width: 900px) {
 
     .mainMenu {
-        margin-bottom: 10vh;
+        margin-bottom: 10dvh;
     }
 
     footer {

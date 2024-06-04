@@ -1,0 +1,33 @@
+/* Theme Name: Dark Theme */
+
+body, body::-webkit-scrollbar {
+    color-scheme: dark;
+    background-image: linear-gradient(to bottom, rgba(4, 55, 20, 0.85), rgba(0, 55, 20, 0.85)) !important;
+    color: #fff;
+}
+
+button, input, input#file-upload-button, select {
+    background-color: rgba(30, 30, 30, 0.425);
+    color: #fff;
+}
+
+.song-title, .song-list-title {
+    background-color: rgba(30, 30, 30, 0.9);
+    color: #fff;
+}
+
+a, p, h1, h2, h3, h4, h5, h6, input::file-selector-button {
+    color: #fff;
+}
+
+.mainMenu, footer, .homeContainer, .menuDiv, label, textarea, .songDetails, .mensaje, option {
+    background-color: rgba(40, 40, 40, 0.45);
+}
+
+tr:nth-child(even), input::file-selector-button, .song-link {
+    background-color: rgba(60, 60, 60, 0.425)
+}
+
+tr:nth-child(odd), .imageDisplay {
+    background-color: rgb(50, 50, 50, 0.43);
+}

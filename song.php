@@ -1,6 +1,7 @@
 <?php
     // Incluir el script songManager.php para obtener los detalles de la canción y los archivos asociados
     require_once "scripts/songManager.php";
+    require_once "scripts/userManager.php";
 ?>
 
 <!DOCTYPE html>
@@ -60,7 +61,7 @@
                 echo "<p>No se encontró ninguna canción con ese ID.</p>";
             }
             ?>
-            <img id="like" class="icon" data-icon="like">
+            <?php require_once "scripts/likedManager.php"; ?>
         </div>
         </div>
     </div>

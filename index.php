@@ -88,6 +88,9 @@
     </div>
     </div>
 
+    <footer class="indexFooter">
+        Findmus &copy 2024
+    </footer>
 
 </body>
 </html>

@@ -42,7 +42,7 @@
     
     <footer id="loginScreen">
         <h4>¿Ya tienes cuenta? <a href="login">Inicia sesión</a></h4>
-        <h5>Findmus © 2024</h5>
+        <h5>Findmus &copy 2024</h5>
     </footer>
 </body>
 </html>

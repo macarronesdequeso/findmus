@@ -1,6 +1,6 @@
 /* Theme Name: Dark Theme */
 
-body {
+body, body::-webkit-scrollbar {
     color-scheme: dark;
     background-image: linear-gradient(to bottom, rgba(4, 24, 56, 0.85), rgba(0, 5, 54, 0.85)) !important;
     color: #fff;
@@ -20,7 +20,7 @@ a, p, h1, h2, h3, h4, h5, h6, input::file-selector-button {
     color: #fff;
 }
 
-.mainMenu, footer, .homeContainer, .menuDiv, label, .songDetails, .mensaje, option {
+.mainMenu, footer, .homeContainer, .menuDiv, label, textarea, .songDetails, .mensaje, option {
     background-color: rgba(40, 40, 40, 0.45);
 }
 
