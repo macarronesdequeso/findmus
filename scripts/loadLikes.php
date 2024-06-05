@@ -1,6 +1,5 @@
 <?php
 function getLikedSongs($userId) {
-
     // Conectar a la base de datos 'users' para obtener las canciones favoritas del usuario
     $host = "localhost";
     $username_db = "root";
@@ -20,8 +19,13 @@ function getLikedSongs($userId) {
         return false;
     }
 
-    // Asegurarse de que los IDs son válidos (números enteros) y eliminar valores vacíos
-    $liked_songs_ids = array_filter(array_map('intval', explode(",", $liked_songs_row['liked_songs'])));
+    // Obtener la cadena de IDs de canciones
+    $liked_songs_str = trim($liked_songs_row['liked_songs'], ",");
+
+    // Asegurarse de que los IDs son válidos (números enteros) y eliminar valores vacíos pero mantener el 0
+    $liked_songs_ids = array_filter(array_map('intval', explode(",", $liked_songs_str)), function($value) {
+        return $value !== '';
+    });
 
     if (empty($liked_songs_ids)) {
         return [];
@@ -38,6 +42,7 @@ function getLikedSongs($userId) {
     $liked_songs_stmt->execute();
     $liked_songs = $liked_songs_stmt->fetchAll(PDO::FETCH_ASSOC);
 
+    echo $liked_songs_sql;
     return $liked_songs;
 }
 ?>

@@ -21,9 +21,6 @@
     <script src="/scripts/themeManager.js"></script>
     <script src="/scripts/indexManager.js"></script>
     <script src="/scripts/userInfoManager.js"></script>
-    <div class="fullScreen">
-
-    </div>
     
     <div class="homeContainer">
         <div class="homeBar">
