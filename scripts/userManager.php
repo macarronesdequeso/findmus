@@ -4,10 +4,12 @@ if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
 
+require_once 'cred.php';
+
 // Conexión a la base de datos
-$host = "localhost";
-$username_db = "root";
-$password_db = "";
+$host = $DBhost;
+$username_db = $DBusername;
+$password_db = $DBpassword;
 $database = "users";
 
 try {

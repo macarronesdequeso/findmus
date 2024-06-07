@@ -56,9 +56,12 @@ function getRandomCategories($conn) {
     return array_rand(array_flip($genres), 4);
 }
 
-$host = "localhost";
-$username_db = "root";
-$password_db = "";
+require_once 'cred.php';
+
+// Conexión a la base de datos
+$host = $DBhost;
+$username_db = $DBusername;
+$password_db = $DBpassword;
 $database = "music";
 
 try {

@@ -9,14 +9,16 @@
         $limit = 5;  // Número de resultados por página
         $offset = ($page - 1) * $limit;  // Calcula el offset para la consulta SQL
 
-        // Datos de conexión a la base de datos
-        $host = "localhost";
-        $username = "root";
-        $password = "";
+        require_once 'cred.php';
+
+        // Conexión a la base de datos
+        $host = $DBhost;
+        $username_db = $DBusername;
+        $password_db = $DBpassword;
         $database = "music";
 
         // Conectar a la base de datos
-        $conn = new mysqli($host, $username, $password, $database);
+        $conn = new mysqli($host, $username_db, $password_db, $database);
 
         // Verifica la conexión
         if ($conn->connect_error) {

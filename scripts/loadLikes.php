@@ -1,10 +1,14 @@
 <?php
 function getLikedSongs($userId) {
-    // Conectar a la base de datos 'users' para obtener las canciones favoritas del usuario
-    $host = "localhost";
-    $username_db = "root";
-    $password_db = "";
+
+    require 'cred.php';
+
+    // Conexión a la base de datos
+    $host = $DBhost;
+    $username_db = $DBusername;
+    $password_db = $DBpassword;
     $database_users = "users";
+
     $conn_users = new PDO("mysql:host=$host;dbname=$database_users", $username_db, $password_db);
     $conn_users->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
@@ -42,7 +46,6 @@ function getLikedSongs($userId) {
     $liked_songs_stmt->execute();
     $liked_songs = $liked_songs_stmt->fetchAll(PDO::FETCH_ASSOC);
 
-    echo $liked_songs_sql;
     return $liked_songs;
 }
 ?>

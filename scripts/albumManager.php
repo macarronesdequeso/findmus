@@ -1,10 +1,4 @@
 <?php
-// Configuración de la conexión a la base de datos
-$host = "localhost";
-$username_db = "root";
-$password_db = "";
-$database = "music";
-
 // Obtener el ID del compositor desde la URL
 if(isset($_GET['id']) && is_numeric($_GET['id'])) {
     $id = intval($_GET['id']);
@@ -16,6 +10,13 @@ if(isset($_GET['id']) && is_numeric($_GET['id'])) {
 
     // Intentar la conexión a la base de datos utilizando PDO
     try {
+        require_once 'cred.php';
+
+        // Conexión a la base de datos
+        $host = $DBhost;
+        $username_db = $DBusername;
+        $password_db = $DBpassword;
+        $database = "music";
         $conn = new PDO("mysql:host=$host;dbname=$database", $username_db, $password_db);
         // Establecer el modo de error de PDO a excepción
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);

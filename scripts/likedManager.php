@@ -15,10 +15,12 @@ if (isset($_SESSION['username'])) {
     $userId = isset($_POST['user_id']);
     $songId = intval($_GET['id']);
 
-    // Conectar a la base de datos 'users' para obtener las canciones favoritas del usuario
-    $host = "localhost";
-    $username_db = "root";
-    $password_db = "";
+    require_once 'cred.php';
+
+    // Conexión a la base de datos
+    $host = $DBhost;
+    $username_db = $DBusername;
+    $password_db = $DBpassword;
     $database_users = "users";
     try {
         $conn_users = new PDO("mysql:host=$host;dbname=$database_users", $username_db, $password_db);

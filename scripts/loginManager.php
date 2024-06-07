@@ -20,10 +20,12 @@ if (isset($_SESSION['cooldown_timestamp']) && time() - $_SESSION['cooldown_times
     exit(); // Detener la ejecución adicional
 }
 
-// Configuración de la conexión a la base de datos
-$host = "localhost";
-$username_db = "root";
-$password_db = "";
+require_once 'cred.php';
+
+// Conexión a la base de datos
+$host = $DBhost;
+$username_db = $DBusername;
+$password_db = $DBpassword;
 $database = "users";
 
 // Intentar la conexión a la base de datos utilizando PDO

@@ -16,10 +16,12 @@ if ($isAdmin != '1') {
 }
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    require_once '../scripts/cred.php';
+
     // Conexión a la base de datos
-    $host = "localhost";
-    $username_db = "root";
-    $password_db = "";
+    $host = $DBhost;
+    $username_db = $DBusername;
+    $password_db = $DBpassword;
     $database = "music";
     $conn = new PDO("mysql:host=$host;dbname=$database", $username_db, $password_db);
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -122,10 +124,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <h3>Selecciona un compositor</h3>
                     <select name="composer_id" id="composer_id" required>
                         <?php
+                        require_once '../scripts/cred.php';
+
                         // Conexión a la base de datos
-                        $host = "localhost";
-                        $username_db = "root";
-                        $password_db = "";
+                        $host = $DBhost;
+                        $username_db = $DBusername;
+                        $password_db = $DBpassword;
                         $database = "music";
                         $conn = new PDO("mysql:host=$host;dbname=$database", $username_db, $password_db);
                         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);

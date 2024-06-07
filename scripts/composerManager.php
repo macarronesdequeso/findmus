@@ -1,8 +1,10 @@
 <?php
-// Configuración de la conexión a la base de datos
-$host = "localhost";
-$username_db = "root";
-$password_db = "";
+require_once 'cred.php';
+
+// Conexión a la base de datos
+$host = $DBhost;
+$username_db = $DBusername;
+$password_db = $DBpassword;
 $database = "music";
 
 // Obtener el ID del compositor desde la URL
