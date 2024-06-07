@@ -24,34 +24,28 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $conn = new PDO("mysql:host=$host;dbname=$database", $username_db, $password_db);
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     
-    // Obtener datos del formulario
-    $name = $_POST['name'];
-    $dateBirth = !empty($_POST['dateBirth']) ? $_POST['dateBirth'] : null;
-    $dateDeath = !empty($_POST['dateDeath']) ? $_POST['dateDeath'] : null;
-    $bio = $_POST['bio'];
+    // Obtener ID del álbum a borrar
+    $albumId = $_POST['album_id'];
 
-    // Insertar el nuevo compositor en la base de datos
-    $sql = "INSERT INTO composers (name, dateBirth, dateDeath, bio) VALUES (:name, :dateBirth, :dateDeath, :bio)";
-    $stmt = $conn->prepare($sql);
-    $stmt->bindParam(':name', $name);
-    $stmt->bindParam(':dateBirth', $dateBirth, PDO::PARAM_NULL);
-    $stmt->bindParam(':dateDeath', $dateDeath, PDO::PARAM_NULL);
-    $stmt->bindParam(':bio', $bio);
-    $stmt->execute();
+    // Actualizar canciones relacionadas
+    $sql_update_songs = "UPDATE songs SET album = 'No Album' WHERE album = (SELECT name FROM albums WHERE id = :id)";
+    $stmt_update_songs = $conn->prepare($sql_update_songs);
+    $stmt_update_songs->bindParam(':id', $albumId);
+    $stmt_update_songs->execute();
 
-    // Obtener el ID generado automáticamente
-    $id = $conn->lastInsertId();
+    // Borrar el álbum de la base de datos
+    $sql_delete = "DELETE FROM albums WHERE id = :id";
+    $stmt_delete = $conn->prepare($sql_delete);
+    $stmt_delete->bindParam(':id', $albumId);
+    $stmt_delete->execute();
 
-    // Directorio donde se guardarán las imágenes de los compositores
-    $targetDir = "../composers/";
-
-    // Manejar la carga de la imagen del compositor
-    if (isset($_FILES['image'])) {
-        $imageFilePath = $targetDir . $id . ".jpg";
-        move_uploaded_file($_FILES['image']['tmp_name'], $imageFilePath);
+    // Eliminar la imagen del álbum
+    $imageFilePath = "../albums/" . $albumId . ".jpg";
+    if (file_exists($imageFilePath)) {
+        unlink($imageFilePath);
     }
 
-    header("Location: /admin/uploadComposer?success=Compositor subido correctamente");
+    header("Location: /admin/deleteAlbum?success=Álbum borrado correctamente");
     exit();
 }
 ?>
@@ -61,7 +55,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Subir compositor</title>
+    <title>Borrar álbum</title>
     <!-- Theme CSS -->
     <link rel="stylesheet" id="theme-style">
     <!-- Specific CSS -->
@@ -82,7 +76,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <img id="logoHome" class="icon" data-icon="logo">
         </div>
         <div class="subhomeBar">
-            <h2>Subir compositor</h2>
+            <h2>Borrar álbum</h2>
             <img id="profileIco" class="icon" data-icon="profile">
         </div>
     </div>
@@ -102,36 +96,41 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
     ?>
 
-    <label>Formulario subir compositor</label>
+    <label>Formulario para borrar álbum</label>
     <div class="menuDiv">
-    <form action="" method="post" enctype="multipart/form-data">
+        <form action="" method="post">
             <div class="grid-container">
                 <div class="grid-item">
-                    <h3>Nombre del compositor</h3>
-                    <input type="text" name="name" id="name" required>
-                </div>
-                <div class="grid-item">
-                    <h3>Fecha de nacimiento</h3>
-                    <input type="date" name="dateBirth" id="dateBirth" required>
-                </div>
-                <div class="grid-item">
-                    <h3>Fecha de defunción</h3>
-                    <input type="date" name="dateDeath" id="dateDeath">
-                </div>
-                <div class="grid-item">
-                    <h3>Biografía</h3>
-                    <textarea name="bio" id="bio" rows="4" required></textarea>
-                </div>
-                <div class="grid-item">
-                    <h3>Imagen del compositor</h3>
-                    <input type="file" name="image" id="image" accept="image/*" required>
+                    <h3>Selecciona un álbum</h3>
+                    <select name="album_id" id="album_id" required>
+                        <?php
+                        // Conexión a la base de datos
+                        $host = "localhost";
+                        $username_db = "root";
+                        $password_db = "";
+                        $database = "music";
+                        $conn = new PDO("mysql:host=$host;dbname=$database", $username_db, $password_db);
+                        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+                        // Consulta para obtener los álbumes
+                        $sql_albums = "SELECT id, name FROM albums";
+                        $stmt_albums = $conn->prepare($sql_albums);
+                        $stmt_albums->execute();
+                        $albums = $stmt_albums->fetchAll(PDO::FETCH_ASSOC);
+
+                        // Mostrar los álbumes como opciones en el dropdown
+                        foreach ($albums as $album) {
+                            echo "<option value='{$album['id']}'>{$album['id']}: {$album['name']}</option>";
+                        }
+                        ?>
+                    </select>
                 </div>
             </div>
+        </div>
+            <div class="mensaje">
+                    <input type="submit" value="Borrar álbum">
+            </div>
+        </form>
     </div>
-    <div class="menuDiv">
-            <input type="submit" value="Subir compositor">
-            <input type="reset" value="Limpiar campos">
-    </div>
-    </form>
 </body>
 </html>

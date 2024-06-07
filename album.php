@@ -10,7 +10,7 @@ require_once "scripts/albumManager.php";
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Findmus</title>
+    <title><?php echo "Findmus - " . $albums['name']; ?></title>
     <!-- Theme CSS -->
     <link rel="stylesheet" id="theme-style">
     <!-- Specific CSS -->
