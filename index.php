@@ -45,7 +45,7 @@
         <?php if ($mostViewedSong !== null): ?>
             <a href="song?id=<?= $mostViewedSong['id'] ?>" class="song-link">
                 <img class="song-image" src="songs/<?= $mostViewedSong['id'] ?>/cover.jpg" alt="<?= $mostViewedSong['id'] ?>">
-                <p class="song-title">¡Novedades!</p>
+                <p class="song-title">Las más populares</p>
             </a>
         <?php endif; ?>
         
