@@ -42,7 +42,6 @@ function getLikedSongs($userId) {
     $liked_songs_stmt->execute();
     $liked_songs = $liked_songs_stmt->fetchAll(PDO::FETCH_ASSOC);
 
-    echo $liked_songs_sql;
     return $liked_songs;
 }
 ?>
